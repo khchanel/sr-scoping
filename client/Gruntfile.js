@@ -335,6 +335,11 @@ module.exports = function (grunt) {
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
+        }, {
+          expand: true,
+          cwd: '<%= yeoman.app %>/bower_components/onsenui/build/css',
+          dest: '<%= yeoman.dist %>/styles',
+          src: ['font_awesome/fonts/*']
         }]
       },
       styles: {
