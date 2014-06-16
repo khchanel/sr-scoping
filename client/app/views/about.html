@@ -1,1 +1,14 @@
-<p>This is the about view.</p>
+<ons-navigator
+    title="About"
+    left-button-icon="fa fa-lg fa-bars"
+    on-left-button-click="ons.splitView.toggle()">
+
+  <ons-page class="center" ng-controller="AboutCtrl">
+    <p>Hello, {{myname ? myname + '!' : 'You are...?'}}</p>
+    <ons-text-input
+        ng-model="myname"
+        placeholder="Enter Your Name">
+    </ons-text-input>
+  </ons-page>
+
+</ons-navigator>

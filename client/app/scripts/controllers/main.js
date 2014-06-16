@@ -14,4 +14,7 @@ angular.module('srScopingApp')
       'AngularJS',
       'Karma'
     ];
+    $scope.changeColor = function() {
+        window.jQuery('#splendid-btn').text('ouchh');
+    };
   });

@@ -1,0 +1,23 @@
+<ons-page style="background-color: white" ns-controller="MainCtrl">
+
+    <ul class="topcoat-list">
+
+        <ons-list-item
+            class="topcoat-list__item--tappable topcoat-list__item__line-height"
+            ng-click="ons.splitView.toggle();
+            ons.splitView.setMainPage('views/main.html')">
+            <i class="fa fa-home fa-lg" style="color: #666"></i>
+            &nbsp; Main
+        </ons-list-item>
+
+        <ons-list-item
+            class="topcoat-list__item--tappable topcoat-list__item__line-height"
+            ng-click="ons.splitView.toggle();
+            ons.splitView.setMainPage('views/about.html')">
+            <i class="fa fa-gear fa-lg" style="color: #666"></i>
+            &nbsp; About
+        </ons-list-item>
+
+    </ul>
+
+</ons-page>
