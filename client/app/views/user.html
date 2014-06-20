@@ -1,28 +1,35 @@
-<ons-page ng-controller="UserCtrl" class="center">
-    <h1>User credentials</h1>
-    <p>
-    You user account information stored on the app <br/>
-    The data will be used to authenticate you on Stream <br/>
-    </p>
+<ons-navigator
+    title="Main"
+    left-button-icon="fa fa-lg fa-bars"
+    on-left-button-click="ons.splitView.toggle()">
+
+  <ons-page ng-controller="UserCtrl" class="center">
+      <h1>User credentials</h1>
+      <p>
+      You user account information stored on the app <br/>
+      The data will be used to authenticate you on Stream <br/>
+      </p>
 
 
-    <div id="user-form" style="margin: 16px;">
-      <label>Username: </label>
-      <ons-text-input
-        ng-model="username"
-        placeholder="Enter username"
-        style="width:150px"></ons-text-input>
+      <div id="user-form" style="margin: 16px;">
+        <label>Username: </label>
+        <ons-text-input
+          ng-model="username"
+          placeholder="Enter username"
+          style="width:150px"></ons-text-input>
 
+        <br/>
+
+        <label>Password: </label>
+        <ons-text-input
+          ng-model="userpass"
+          type="password"
+          placeholder="Enter password"
+          style="width:150px"></ons-text-input>
+      </div>
       <br/>
+      <ons-button id="save-btn" type="cta cta-large" ng-click="saveCredentials()">Save</ons-button>
+      <ons-button id="clear-btn" type="default" ng-click="clearCredentials()">Clear</ons-button>
+  </ons-page>
 
-      <label>Password: </label>
-      <ons-text-input
-        ng-model="userpass"
-        type="password"
-        placeholder="Enter password"
-        style="width:150px"></ons-text-input>
-    </div>
-    <br/>
-    <ons-button id="save-btn" type="cta cta-large" ng-click="saveCredentials()">Save</ons-button>
-    <ons-button id="clear-btn" type="default" ng-click="clearCredentials()">Clear</ons-button>
-</ons-page>
+</ons-navigator>
