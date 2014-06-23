@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngStorage',
-    'onsen.directives'
+    'onsen.directives',
+    'srScopingApp.memoryService',
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -32,6 +33,10 @@ angular
       .when('/user', {
         templateUrl: 'views/user.html',
         controller: 'UserCtrl'
+      })
+      .when('/SorList', {
+        templateUrl: 'views/sor-list.html',
+        controller: 'SorListCtrl'
       })
       .otherwise({
         redirectTo: '/'

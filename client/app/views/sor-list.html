@@ -1,0 +1,14 @@
+<ons-navigator
+    title="SOR List"
+    left-button-icon="fa fa-lg fa-bars"
+    on-left-button-click="ons.splitView.toggle()">
+
+  <ons-page class="center" ng-controller="SorListCtrl">
+    <ons-list>
+        <ons-list-item ng-repeat="sor in sors">
+            #{{sor.id}}. {{sor.code}} - {{sor.description}}   ${{sor.price}}
+        </ons-list-item>
+    </ons-list>
+  </ons-page>
+
+</ons-navigator>
