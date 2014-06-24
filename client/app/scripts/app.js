@@ -18,7 +18,7 @@ angular
     'ngTouch',
     'ngStorage',
     'onsen.directives',
-    'srScopingApp.memoryService',
+    'srScopingApp.restService',
   ])
   .config(function ($routeProvider) {
     $routeProvider
