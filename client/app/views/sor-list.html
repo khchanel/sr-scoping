@@ -1,14 +1,20 @@
-<ons-navigator
-    title="SOR List"
-    left-button-icon="fa fa-lg fa-bars"
-    on-left-button-click="ons.splitView.toggle()">
-
-  <ons-page class="center" ng-controller="SorListCtrl">
+<ons-page class="center" ng-controller="SorListCtrl">
     <ons-list>
+        <h1>{{sors.length}}</h1>
+        <ons-list-item>
+            <ons-row style="color: blue">
+                <ons-col>Code</ons-col>
+                <ons-col>Name</ons-col>
+                <ons-col>Price</ons-col>
+            </ons-row>
+        </ons-list-item>
+
         <ons-list-item ng-repeat="sor in sors">
-            #{{sor.id}}. {{sor.code}} - {{sor.description}}   ${{sor.price}}
+            <ons-row>
+                <ons-col>{{sor.SORCode}}</ons-col>
+                <ons-col>{{sor.Name}}</ons-col>
+                <ons-col>{{sor.Price | currency}}</ons-col>
+            </ons-row>
         </ons-list-item>
     </ons-list>
-  </ons-page>
-
-</ons-navigator>
+</ons-page>
