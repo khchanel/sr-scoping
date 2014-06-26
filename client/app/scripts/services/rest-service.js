@@ -1,7 +1,9 @@
 'use strict';
 
+var API_SERVER = 'http://srconstruction.khchanel.com';
+
 angular.module('srScopingApp.restService', ['ngResource'])
     .factory('Sor', ['$resource',
         function ($resource) {
-            return $resource('http://srconstruction.khchanel.com/sor');
+            return $resource(API_SERVER + '/sor');
         }]);
