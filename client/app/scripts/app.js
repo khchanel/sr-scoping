@@ -38,6 +38,10 @@ angular
         templateUrl: 'views/sor-list.html',
         controller: 'SorListCtrl'
       })
+      .when('/sor-detail', {
+        templateUrl: 'views/sor-detail.html',
+        controller: 'SorDetailCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

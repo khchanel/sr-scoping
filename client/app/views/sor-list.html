@@ -9,7 +9,7 @@
             </ons-row>
         </ons-list-item>
 
-        <ons-list-item ng-repeat="sor in sors">
+        <ons-list-item ng-repeat="sor in sors" ng-click="ons.navigator.pushPage('views/sor-detail.html', {title: 'SOR Task', sorObj: sor})">
             <ons-row>
                 <ons-col>{{sor.SORCode}}</ons-col>
                 <ons-col>{{sor.Name}}</ons-col>
