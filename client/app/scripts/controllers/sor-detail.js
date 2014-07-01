@@ -10,4 +10,5 @@
 angular.module('srScopingApp')
   .controller('SorDetailCtrl', function ($scope) {
     $scope.sor = $scope.ons.navigator.getCurrentPage().options.sorObj;
+    $scope.quantity = null;
   });
