@@ -1,1 +1,37 @@
-<p>This is the basket view.</p>
+<ons-navigator
+    title="Basket"
+    left-button-icon="fa fa-lg fa-bars"
+    on-left-button-click="ons.splitView.toggle()">
+
+  <ons-page class="center" ng-controller="BasketCtrl">
+
+    <ons-list>
+      <h1>{{basket.length}}</h1>
+
+      <ons-list-item>
+        <ons-row style="color: blue">
+          <ons-col>Code</ons-col>
+          <ons-col>Price</ons-col>
+          <ons-col>Quantity</ons-col>
+        </ons-row>
+      </ons-list-item>
+
+      <ons-list-item ng-repeat="task in basket">
+        <ons-row style="color: blue">
+          <ons-col>{{task.sor.SORCode}}</ons-col>
+          <ons-col>{{task.sor.Price}}</ons-col>
+          <ons-col>{{task.quantity}}</ons-col>
+        </ons-row>
+      </ons-list-item>
+
+      <ons-list-item>
+        <ons-row>
+          <h3>Total: {{basket.total()}}</h3>
+        </ons-row>
+      </ons-list-item>
+    </ons-list>
+
+
+  </ons-page>
+
+</ons-navigator>
