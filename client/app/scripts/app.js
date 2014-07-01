@@ -42,6 +42,10 @@ angular
         templateUrl: 'views/sor-detail.html',
         controller: 'SorDetailCtrl'
       })
+      .when('/basket', {
+        templateUrl: 'views/basket.html',
+        controller: 'BasketCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
