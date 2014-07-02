@@ -6,7 +6,7 @@
   <ons-page class="center" ng-controller="BasketCtrl">
 
     <ons-list>
-      <h1>{{basket.length}}</h1>
+      <h1>{{$storage.basket.length}}</h1>
 
       <ons-list-item>
         <ons-row style="color: blue">
@@ -16,7 +16,7 @@
         </ons-row>
       </ons-list-item>
 
-      <ons-list-item ng-repeat="task in basket">
+      <ons-list-item ng-repeat="task in $storage.basket">
         <ons-row style="color: blue">
           <ons-col>{{task.sor.SORCode}}</ons-col>
           <ons-col>{{task.sor.Price}}</ons-col>
@@ -26,7 +26,13 @@
 
       <ons-list-item>
         <ons-row>
-          <h3>Total: {{basket.total()}}</h3>
+          <h3>Total: {{total()}}</h3>
+        </ons-row>
+      </ons-list-item>
+
+      <ons-list-item>
+        <ons-row>
+          <ons-button ng-click="clearBasket();">clear basket</ons-button>
         </ons-row>
       </ons-list-item>
     </ons-list>
