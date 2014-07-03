@@ -61,7 +61,7 @@
       </ons-row>
 
       <!-- Add Task form -->
-      <form id="add-sor-form">
+      <form name="addForm">
         <ons-row>
           <ons-col>Quantity:</ons-col>
 
@@ -70,14 +70,16 @@
               ng-model="quantity"
               type="number"
               placeholder="Type here"
+              required
+              min="1"
               style="display: block; width: 95%">
             </ons-text-input>
           </ons-col>
 
           <ons-col>
-            <ons-button type="cta">
-              Add Task
-            </ons-button>
+            <button id="add-task-btn" ng-class="addBtnClass" ng-click="addTask()" ng-disabled="addForm.$invalid || saved">
+              {{addBtnText}}
+            </button>
           </ons-col>
         </ons-row>
       </form>
