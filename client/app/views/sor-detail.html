@@ -1,7 +1,5 @@
 <ons-page ng-controller="SorDetailCtrl">
-
   <ons-scroller>
-
     <div style="margin: 15px;">
       <h3 style="text-align:center">Task Details</h3>
       <ons-row>
@@ -61,7 +59,30 @@
           <p>{{sor.UomCode}}</p>
         </ons-col>
       </ons-row>
-    </div>
 
+      <!-- Add Task form -->
+      <form name="addForm">
+        <ons-row>
+          <ons-col>Quantity:</ons-col>
+
+          <ons-col>
+            <ons-text-input
+              ng-model="quantity"
+              type="number"
+              placeholder="Type here"
+              required
+              min="1"
+              style="display: block; width: 95%">
+            </ons-text-input>
+          </ons-col>
+
+          <ons-col>
+            <button id="add-task-btn" ng-class="addBtnClass" ng-click="addTask()" ng-disabled="addForm.$invalid || saved">
+              {{addBtnText}}
+            </button>
+          </ons-col>
+        </ons-row>
+      </form>
+    </div>
   </ons-scroller>
 </ons-page>
