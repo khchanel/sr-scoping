@@ -19,7 +19,7 @@
       <ons-list-item ng-repeat="task in $storage.basket">
         <ons-row style="color: blue">
           <ons-col>{{task.sor.SORCode}}</ons-col>
-          <ons-col>{{task.sor.Price}}</ons-col>
+          <ons-col>{{task.sor.Price | currency}}</ons-col>
           <ons-col>{{task.quantity}}</ons-col>
         </ons-row>
       </ons-list-item>
