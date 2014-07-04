@@ -6,7 +6,12 @@
   <ons-page class="center" ng-controller="BasketCtrl">
 
     <ons-list>
-      <h1>{{$storage.basket.length}}</h1>
+      <h1>Showing {{($storage.basket | filter:searchText).length}} of {{$storage.basket.length}}</h1>
+
+      <ons-search-input
+        ng-model="searchText"
+        placeholder="Search">
+      </ons-search-input>
 
       <ons-list-item>
         <ons-row style="color: blue">
@@ -16,7 +21,7 @@
         </ons-row>
       </ons-list-item>
 
-      <ons-list-item ng-repeat="task in $storage.basket">
+      <ons-list-item ng-repeat="task in $storage.basket | filter:searchText">
         <ons-row style="color: blue">
           <ons-col>{{task.sor.SORCode}}</ons-col>
           <ons-col>{{task.sor.Price | currency}}</ons-col>
