@@ -50,7 +50,7 @@ angular
         redirectTo: '/'
       });
   })
-  .run(function ($localStorage) {
+  .run(function ($rootScope, $localStorage) {
 
     // initialize localStorage
     $localStorage.$default({
@@ -60,4 +60,14 @@ angular
       },
       basket: []
     });
+
+    // handle back button on android
+    document.addEventListener("backbutton", function (e) {
+        if ($rootScope.ons.navigator.getPages().length > 1) {
+            e.preventDefault();
+            $rootScope.ons.navigator.popPage();
+        } else {
+            navigator.app.exitApp();
+        }
+    }, false);
   });
