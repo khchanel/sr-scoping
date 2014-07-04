@@ -49,4 +49,15 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .run(function ($localStorage) {
+
+    // initialize localStorage
+    $localStorage.$default({
+      user: {
+        name: '',
+        passwd: ''
+      },
+      basket: []
+    });
   });
