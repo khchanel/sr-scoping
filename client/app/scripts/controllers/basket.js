@@ -9,9 +9,7 @@
  */
 angular.module('srScopingApp')
   .controller('BasketCtrl', function ($scope, $localStorage) {
-    $scope.$storage = $localStorage.$default({
-      basket: []
-    });
+    $scope.$storage = $localStorage;
 
     $scope.total = function() {
       var total = 0;
@@ -29,7 +27,6 @@ angular.module('srScopingApp')
 
     $scope.clearBasket = function() {
       delete $scope.$storage.basket;
-
       $scope.$storage.basket = [];
     };
   });
