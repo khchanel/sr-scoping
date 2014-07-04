@@ -62,12 +62,16 @@ angular
     });
 
     // handle back button on android
-    document.addEventListener("backbutton", function (e) {
+    document.addEventListener('backbutton', function (e) {
         if ($rootScope.ons.navigator.getPages().length > 1) {
             e.preventDefault();
             $rootScope.ons.navigator.popPage();
         } else {
-            navigator.app.exitApp();
+            var confirmExit = window.confirm('Quit app?');
+
+            if (confirmExit) {
+              navigator.app.exitApp();
+            }
         }
     }, false);
   });
