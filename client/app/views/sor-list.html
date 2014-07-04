@@ -1,6 +1,6 @@
 <ons-page class="center" ng-controller="SorListCtrl">
     <ons-list>
-        <h1>Showing {{(sors | filter:searchText).length}} of {{sors.length}}</h1>
+        <h1>Showing {{searchResult.length}} of {{sors.length}}</h1>
 
         <ons-search-input
             ng-model="searchText"
@@ -16,7 +16,7 @@
         </ons-list-item>
 
         <ons-list-item
-            ng-repeat="sor in sors | filter:searchText"
+            ng-repeat="sor in searchResult = (sors | filter:searchText)"
             ng-click="ons.navigator.pushPage('views/sor-detail.html', {title: 'SOR Task', sorObj: sor})">
             <ons-row>
                 <ons-col>{{sor.SORCode}}</ons-col>
