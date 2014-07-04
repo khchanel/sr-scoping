@@ -9,24 +9,25 @@
  */
 angular.module('srScopingApp')
   .controller('UserCtrl', function ($scope, $localStorage) {
-    $scope.$storage = $localStorage;
 
-    $scope.username = $scope.$storage.username;
-    $scope.userpass = $scope.$storage.userpass;
+    $scope.$storage = $localStorage;
+    $scope.user = angular.copy($scope.$storage.user);
 
 
     $scope.saveCredentials = function() {
-      $scope.$storage.username = $scope.username;
-      $scope.$storage.userpass = $scope.userpass;
+      $scope.$storage.user = angular.copy($scope.user);
 
       window.jQuery('#save-btn').text('Saved Successfully!');
     };
 
     $scope.clearCredentials = function() {
-      delete $scope.$storage.username;
-      delete $scope.$storage.userpass;
 
-      $scope.username = null;
-      $scope.userpass = null;
+      $scope.user = {
+        name: '',
+        passwd: ''
+      };
+
+      delete $scope.$storage.user;
+      $scope.$storage.user = angular.copy($scope.user);
     };
   });
