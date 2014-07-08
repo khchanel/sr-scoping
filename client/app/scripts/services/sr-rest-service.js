@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc service
- * @name SrRestService.Sor
+ * @name srRestService.Sor
  * @description
  * # Sor
- * Factory in the SrRestService.
+ * Factory in the srRestService.
  */
 
-angular.module('SrRestService', ['ngResource', 'ngStorage'])
+angular.module('srRestService', ['ngResource', 'ngStorage'])
 
   .constant('SR_API_SERVER', 'http://srconstruction.khchanel.com')
 

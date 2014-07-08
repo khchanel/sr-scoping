@@ -18,7 +18,7 @@ angular
     'ngTouch',
     'ngStorage',
     'onsen.directives',
-    'SrRestService',
+    'srRestService',
   ])
   .config(function ($routeProvider) {
     $routeProvider
