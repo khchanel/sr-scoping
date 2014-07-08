@@ -6,10 +6,17 @@ describe('Controller: SorListCtrl', function () {
   beforeEach(module('srScopingApp'));
 
   var SorlistCtrl,
-    scope;
+    scope,
+    $httpBackend;
+
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, _$httpBackend_, SR_API_SERVER) {
+
+    $httpBackend = _$httpBackend_;
+      $httpBackend.expectGET(new RegExp(SR_API_SERVER + '/sor?.*'))
+        .respond([{SORCode: 'MIN18350'}, {SORCode: 'MIN18400'}]);
+
     scope = $rootScope.$new();
     SorlistCtrl = $controller('SorListCtrl', {
       $scope: scope
@@ -17,12 +24,15 @@ describe('Controller: SorListCtrl', function () {
   }));
 
   it('should attach a list of SOR to the scope', function () {
+    $httpBackend.flush();
     expect(scope.sors.length).toBe(2);
   });
-  it('should set scope.kitchen to KIT1234', function () {
-    expect(scope.kitchen[0].code).toBe('KIT1234');
+  it('should set scope.sors[0].SORCode to MIN18350', function () {
+    $httpBackend.flush();
+    expect(scope.sors[0].SORCode).toBe('MIN18350');
   });
-  it('should set scope.living to LIV6668', function () {
-    expect(scope.living[0].code).toBe('LIV6668');
+  it('should set scope.sors[1].SORCode to MIN18400', function () {
+    $httpBackend.flush();
+    expect(scope.sors[1].SORCode).toBe('MIN18400');
   });
 });
