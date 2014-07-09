@@ -14,6 +14,9 @@ angular.module('srScopingApp')
     $scope.user = angular.copy($scope.$storage.user);
 
 
+    /**
+     * Save user entered login details to persistent storage
+     */
     $scope.saveCredentials = function() {
       $scope.$storage.user = angular.copy($scope.user);
 
@@ -25,6 +28,9 @@ angular.module('srScopingApp')
       }
     };
 
+    /**
+     * Clear stored user logins
+     */
     $scope.clearCredentials = function() {
 
       $scope.user = {
