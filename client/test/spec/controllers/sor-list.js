@@ -9,13 +9,47 @@ describe('Controller: SorListCtrl', function () {
     scope,
     $httpBackend;
 
+  var testSor =
+    [{
+      "SORCode": "MIN18350",
+      "Tradecode": "",
+      "UomCode": "m.",
+      "Name": "(Renew strip flooring up to 6 metres)",
+      "LongDescription": "Remove and dispose of existing and supply and fix strip flooring up to 6 metres.  Hardwood\/Cypress up to 100mm wide.  Staggered joints - Each room.",
+      "Status": "False",
+      "Price201213": "9.999999999",
+      "Price": "9.999999999",
+      "Warranty": "0",
+      "Manual": "0",
+      "Deleted": "0",
+      "Code": "606",
+      "Location": "All,BED1 ,HALL, AIRL",
+      "Photo": "~\\Files\\SOR\\1c8dbe4709ae44a388f6dee379a8f0bc.jpg"
+    }, {
+      "SORCode": "MIN18400",
+      "Tradecode": "",
+      "UomCode": "m2.",
+      "Name": "(Renew Cyprus flooring over 6.0lm ? additional to MIN18350)",
+      "LongDescription": "Remove and dispose of existing and supply and fix new Cypress flooring over 6 lineal metres per separate room in addition to MIN18350.  Nails to be punched and filled - Staggered joints. Cypress Pine.",
+      "Status": "False",
+      "Price201213": "9.999999999",
+      "Price": "9.999999999",
+      "Warranty": "0",
+      "Manual": "0",
+      "Deleted": "0",
+      "Code": "607",
+      "Location": "AIRL",
+      "Photo": ""
+    }];
+
+
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope, _$httpBackend_, SR_API_SERVER) {
 
     $httpBackend = _$httpBackend_;
       $httpBackend.expectGET(new RegExp(SR_API_SERVER + '/sor?.*'))
-        .respond([{SORCode: 'MIN18350'}, {SORCode: 'MIN18400'}]);
+        .respond(testSor);
 
     scope = $rootScope.$new();
     SorlistCtrl = $controller('SorListCtrl', {
