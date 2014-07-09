@@ -17,7 +17,12 @@ angular.module('srScopingApp')
     $scope.saveCredentials = function() {
       $scope.$storage.user = angular.copy($scope.user);
 
-      window.jQuery('#save-btn').text('Saved Successfully!');
+      // jQuery is not available in testing
+      try {
+        window.jQuery('#save-btn').text('Saved Successfully!');
+      } catch (err) {
+        return;
+      }
     };
 
     $scope.clearCredentials = function() {
