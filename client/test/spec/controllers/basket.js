@@ -77,4 +77,14 @@ describe('Controller: BasketCtrl', function () {
       + testTasks[1].sor.Price * testTasks[1].quantity
     );
   });
+
+
+  it('should be able to clear basket', function () {
+    scope.$storage.basket.push.apply(scope.$storage.basket, testTasks);
+    expect(scope.$storage.basket.length).toBe(2);
+
+    scope.clearBasket();
+
+    expect(scope.$storage.basket.length).toBe(0);
+  });
 });
