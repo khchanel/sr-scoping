@@ -53,4 +53,20 @@ describe('Controller: SorDetailCtrl', function () {
   it ('should show all sor content', function () {
     expect(scope.sor.SORCode).toBe(testSor.SORCode);
   });
+
+
+  it('should be able to add task to basket', function () {
+    expect(scope.$storage.basket).toBeDefined();
+    expect(scope.$storage.basket.length).toBe(0);
+
+    var myquantity = 3;
+    scope.quantity = myquantity;
+    scope.addTask();
+
+    expect(scope.$storage.basket.length).toBe(1);
+    expect(scope.$storage.basket[0].sor.SORCode).toBe(testSor.SORCode);
+    expect(scope.$storage.basket[0].quantity).toBe(myquantity);
+
+  });
+
 });
