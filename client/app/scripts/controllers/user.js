@@ -12,6 +12,14 @@ angular.module('srScopingApp')
 
     $scope.$storage = $localStorage;
     $scope.user = angular.copy($scope.$storage.user);
+    $scope.saveBtnTxt = 'Save';
+
+    /**
+     * Update save button text when fields updated
+     */
+    $scope.$watch('user', function () {
+      $scope.saveBtnTxt = 'Save';
+    }, true);
 
 
     /**
@@ -20,12 +28,7 @@ angular.module('srScopingApp')
     $scope.saveCredentials = function() {
       $scope.$storage.user = angular.copy($scope.user);
 
-      // jQuery is not available in testing
-      try {
-        window.jQuery('#save-btn').text('Saved Successfully!');
-      } catch (err) {
-        return;
-      }
+      $scope.saveBtnTxt = 'Saved Successfully!';
     };
 
     /**
@@ -41,4 +44,5 @@ angular.module('srScopingApp')
       delete $scope.$storage.user;
       $scope.$storage.user = angular.copy($scope.user);
     };
+
   });
