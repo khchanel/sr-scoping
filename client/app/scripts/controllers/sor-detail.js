@@ -13,6 +13,8 @@ angular.module('srScopingApp')
 
     $scope.sor = $scope.ons.navigator.getCurrentPage().options.sorObj;
     $scope.quantity = 0;
+    $scope.comment = '';
+
     $scope.addBtnClass = 'topcoat-button';
     $scope.addBtnText = 'Add';
     $scope.saved = false;
@@ -27,7 +29,8 @@ angular.module('srScopingApp')
       // set task data
       var task = {
         'sor': $scope.sor,
-        'quantity': $scope.quantity
+        'quantity': $scope.quantity,
+        'comment': $scope.comment
       };
 
       // add task to basket
