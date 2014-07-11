@@ -73,8 +73,8 @@ describe('Controller: BasketCtrl', function () {
     // check total
     expect(scope.total()).toBe(83);
     expect(scope.total()).toBe(
-      testTasks[0].sor.Price * testTasks[0].quantity
-      + testTasks[1].sor.Price * testTasks[1].quantity
+      testTasks[0].sor.Price * testTasks[0].quantity +
+        testTasks[1].sor.Price * testTasks[1].quantity
     );
   });
 
