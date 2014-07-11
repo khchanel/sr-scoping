@@ -55,6 +55,11 @@ describe('Controller: SorDetailCtrl', function () {
   });
 
 
+  it('should contain quantity', function() {
+    expect(scope.quantity).toBeDefined();
+  });
+
+
   it('should be able to add task to basket', function () {
     expect(scope.$storage.basket).toBeDefined();
     expect(scope.$storage.basket.length).toBe(0);
