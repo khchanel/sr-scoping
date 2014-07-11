@@ -60,17 +60,26 @@ describe('Controller: SorDetailCtrl', function () {
   });
 
 
+  it('should contain comment', function() {
+    expect(scope.comment).toBeDefined();
+  });
+
+
   it('should be able to add task to basket', function () {
     expect(scope.$storage.basket).toBeDefined();
     expect(scope.$storage.basket.length).toBe(0);
 
     var myquantity = 3;
+    var mycomment = 'need special care';
+
     scope.quantity = myquantity;
+    scope.comment = mycomment;
     scope.addTask();
 
     expect(scope.$storage.basket.length).toBe(1);
     expect(scope.$storage.basket[0].sor.SORCode).toBe(testSor.SORCode);
     expect(scope.$storage.basket[0].quantity).toBe(myquantity);
+    expect(scope.$storage.basket[0].comment).toBe(mycomment);
 
   });
 
