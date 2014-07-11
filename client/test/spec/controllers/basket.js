@@ -12,41 +12,41 @@ describe('Controller: BasketCtrl', function () {
   // note that the SOR price has been modified from original
   var testTasks = [
     {
-      "sor": {
-        "SORCode": "MIN18400",
-        "Tradecode": "",
-        "UomCode": "m2.",
-        "Name": "(Renew Cyprus flooring over 6.0lm ? additional to MIN18350)",
-        "LongDescription": "Remove and dispose of existing and supply and fix new Cypress flooring over 6 lineal metres per separate room in addition to MIN18350.  Nails to be punched and filled - Staggered joints. Cypress Pine.",
-        "Status": "False",
-        "Price201213": "9",
-        "Price": "9",
-        "Warranty": "0",
-        "Manual": "0",
-        "Deleted": "0",
-        "Code": "607",
-        "Location": "AIRL",
-        "Photo": ""
+      'sor': {
+        'SORCode': 'MIN18400',
+        'Tradecode': '',
+        'UomCode': 'm2.',
+        'Name': '(Renew Cyprus flooring over 6.0lm ? additional to MIN18350)',
+        'LongDescription': 'Remove and dispose of existing and supply and fix new Cypress flooring over 6 lineal metres per separate room in addition to MIN18350.  Nails to be punched and filled - Staggered joints. Cypress Pine.',
+        'Status': 'False',
+        'Price201213': '9',
+        'Price': '9',
+        'Warranty': '0',
+        'Manual': '0',
+        'Deleted': '0',
+        'Code': '607',
+        'Location': 'AIRL',
+        'Photo': ''
       },
-      "quantity": 7
+      'quantity': 7
     }, {
-      "sor": {
-        "SORCode": "MIN18750",
-        "Tradecode": "",
-        "UomCode": "Post.",
-        "Name": "(Renew Newel Post including concreting up to 1.5metres)",
-        "LongDescription": "Remove and dispose of existing and supply and fix newel post including concreting - painted to match, 1 coat sealer, and two finish coats.  Minimum 100 x 100mm D.A.R. Hardwood - up to 1.5 metres.  Includes refixing of any existing rails, bolts etc.",
-        "Status": "False",
-        "Price201213": "10",
-        "Price": "10",
-        "Warranty": "0",
-        "Manual": "0",
-        "Deleted": "0",
-        "Code": "614",
-        "Location": "",
-        "Photo": ""
+      'sor': {
+        'SORCode': 'MIN18750',
+        'Tradecode': '',
+        'UomCode': 'Post.',
+        'Name': '(Renew Newel Post including concreting up to 1.5metres)',
+        'LongDescription': 'Remove and dispose of existing and supply and fix newel post including concreting - painted to match, 1 coat sealer, and two finish coats.  Minimum 100 x 100mm D.A.R. Hardwood - up to 1.5 metres.  Includes refixing of any existing rails, bolts etc.',
+        'Status': 'False',
+        'Price201213': '10',
+        'Price': '10',
+        'Warranty': '0',
+        'Manual': '0',
+        'Deleted': '0',
+        'Code': '614',
+        'Location': '',
+        'Photo': ''
       },
-      "quantity": 2
+      'quantity': 2
     }];
 
   // Initialize the controller and a mock scope
