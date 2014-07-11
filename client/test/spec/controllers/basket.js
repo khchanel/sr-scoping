@@ -78,6 +78,11 @@ describe('Controller: BasketCtrl', function () {
     );
   });
 
+  it('total should return zero if basket has no item', function() {
+    expect(scope.$storage.basket.length).toBe(0);
+    expect(scope.total()).toBe(0);
+  });
+
 
   it('should be able to clear basket', function () {
     scope.$storage.basket.push.apply(scope.$storage.basket, testTasks);
