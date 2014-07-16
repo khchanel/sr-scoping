@@ -14,4 +14,5 @@ angular.module('srScopingApp')
       'AngularJS',
       'Karma'
     ];
+
   });

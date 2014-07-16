@@ -1,6 +1,6 @@
-<ons-page>
+<ons-page ng-app="srScopingApp" >
 
-    <ul class="topcoat-list">
+    <ul class="topcoat-list opcoat-list--noborder" >
 
         <ons-list-item
             class="topcoat-list__item--tappable topcoat-list__item__line-height"
@@ -31,10 +31,10 @@
             &nbsp; Basket
         </ons-list-item>
 
-        <div class="topcoat-list topcoat-list--noborder">
-        <h3 class="topcoat-list__header" ng-controller="ProjCtrl">Projects</h3>
-        <li class="topcoat-list__item topcoat-list__item__line-height" ng-repeat="data in testThings">        
-              {{data}}
+        <div class="topcoat-list topcoat-list--noborder" ng-controller="MainCtrl">
+        <h3 class="topcoat-list__header" >Projects</h3>
+        <li class="topcoat-list__item topcoat-list__item__line-height" ng-repeat="project in projects" ng-click="ons.splitView.toggle();ons.splitView.setMainPage('views/basket.html')">
+             <h9>Project Code: {{project.Code}}</h9>
         </li>
         </div>
     </ul>
