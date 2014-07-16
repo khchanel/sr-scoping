@@ -20,5 +20,12 @@ angular.module('srRestService', ['ngResource', 'ngStorage'])
           user: $localStorage.user.name,
           passwd: $localStorage.user.passwd
         });
-    }
-  ]);
+    }])
+  .factory('Project', ['$resource', '$localStorage', 'SR_API_SERVER',
+    function($resource, $localStorage, API_SERVER) {
+      return $resource(API_SERVER + '/projects/services/projects.svc/GetProjectsMethod/inputStr/:user/:passwd',
+        {
+          user: $localStorage.user.name,
+          passwd: $localStorage.user.passwd
+        });
+    }]);

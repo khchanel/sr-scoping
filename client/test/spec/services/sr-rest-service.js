@@ -1,14 +1,17 @@
 'use strict';
 
-describe('Service: Sor', function () {
+describe('Service: srRestService', function () {
 
   // load the service's module
   beforeEach(module('srScopingApp'));
 
   // instantiate service
   var Sor;
-  beforeEach(inject(function (_Sor_) {
+  var Project;
+
+  beforeEach(inject(function (_Sor_, _Project_) {
     Sor = _Sor_;
+    Project = _Project_;
   }));
 
   it('should have Sor being true', function () {
@@ -24,5 +27,10 @@ describe('Service: Sor', function () {
     expect(Sor.query).toBeDefined();
   }));
 
+
+  it('should have defined Project factory', inject(function(Project) {
+    expect(Project).toBeDefined();
+    expect(Project.query).toBeDefined();
+  }));
 
 });
