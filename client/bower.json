@@ -13,7 +13,8 @@
     "angular-route": "1.2.*",
     "jquery": "~2.1.1",
     "onsenui": "~1.0.4",
-    "ngstorage": "~0.3.0"
+    "ngstorage": "~0.3.0",
+    "angular-truncate": "*"
   },
   "devDependencies": {
     "angular-mocks": "1.2.*",
