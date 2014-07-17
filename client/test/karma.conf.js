@@ -25,6 +25,7 @@ module.exports = function(config) {
       'app/bower_components/angular-sanitize/angular-sanitize.js',
       'app/bower_components/angular-touch/angular-touch.js',
       'app/bower_components/ngstorage/ngStorage.js',
+      'app/bower_components/angular-truncate/src/truncate.js',
       'app/bower_components/onsenui/build/js/onsenui.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
