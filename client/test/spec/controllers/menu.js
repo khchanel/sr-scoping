@@ -12,27 +12,27 @@ describe('Controller: MenuCtrl', function () {
   var testUser = {
     name: 'username',
     passwd: 'mypassword'
-  }
+  };
 
   var testProjects = [{
-    "Address": "1\/69-71 Isabella Street, PARRAMATTA, NSW, 2150",
-    "Client": "New South Wales Land & Housing Corporation",
-    "ClientRef": "241013",
-    "Code": 59005,
-    "ContractorRef": null,
-    "Coordinator": "Nelson Chan",
-    "Duration": null,
-    "Finish": "03\/07\/2014",
-    "FinishDate": null,
-    "Instructions": "",
-    "MasterCode": null,
-    "SLA": null,
-    "Start": "25\/05\/2014",
-    "StartDate": null,
-    "Status": "New",
-    "SubClient": null,
-    "TaskType": null
-  }]
+    'Address': '1\/69-71 Isabella Street, PARRAMATTA, NSW, 2150',
+    'Client': 'New South Wales Land & Housing Corporation',
+    'ClientRef': '241013',
+    'Code': 59005,
+    'ContractorRef': null,
+    'Coordinator': 'Nelson Chan',
+    'Duration': null,
+    'Finish': '03\/07\/2014',
+    'FinishDate': null,
+    'Instructions': '',
+    'MasterCode': null,
+    'SLA': null,
+    'Start': '25\/05\/2014',
+    'StartDate': null,
+    'Status': 'New',
+    'SubClient': null,
+    'TaskType': null
+  }];
 
 
   // Initialize the controller and a mock scope
