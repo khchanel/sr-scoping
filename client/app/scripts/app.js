@@ -17,6 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngStorage',
+    'ngGrid',
     'onsen.directives',
     'truncate',
     'srRestService',
