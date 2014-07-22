@@ -1,28 +1,14 @@
 <ons-page class="center" ng-controller="SorListCtrl">
-    <ons-list>
-        <h1>Showing {{searchResult.length}} of {{sors.length}}</h1>
+  <ons-scroller>
 
-        <ons-search-input
-            ng-model="searchText"
-            placeholder="Search">
-        </ons-search-input>
+    <h1>Showing {{(sors | filter:filterOptions.filterText).length}} of {{sors.length}}</h1>
 
-        <ons-list-item>
-            <ons-row style="color: blue">
-                <ons-col>Code</ons-col>
-                <ons-col>Name</ons-col>
-                <ons-col>Price</ons-col>
-            </ons-row>
-        </ons-list-item>
+    <ons-search-input
+        ng-model="filterOptions.filterText"
+        placeholder="Search">
+    </ons-search-input>
 
-        <ons-list-item
-            ng-repeat="sor in searchResult = (sors | filter:searchText)"
-            ng-click="ons.navigator.pushPage('views/sor-detail.html', {title: 'SOR Task', sorObj: sor})">
-            <ons-row>
-                <ons-col>{{sor.SORCode}}</ons-col>
-                <ons-col>{{sor.Name}}</ons-col>
-                <ons-col>{{sor.Price | currency}}</ons-col>
-            </ons-row>
-        </ons-list-item>
-    </ons-list>
+    <div class="sor-grid" ng-grid="gridOptions"></div>
+
+  </ons-scroller>
 </ons-page>
