@@ -1,11 +1,14 @@
 'use strict';
 
 /**
- * @ngdoc service
- * @name srRestService.Sor
+ * @ngdoc module
+ * @name srRestService
  * @description
  * # Sor
- * Factory in the srRestService.
+ * Sor $resource using web service
+ *
+ * # Project
+ * Project $resource using web service
  */
 
 angular.module('srRestService', ['ngResource', 'ngStorage'])
