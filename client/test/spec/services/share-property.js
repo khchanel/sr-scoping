@@ -33,4 +33,8 @@ describe('Service: ShareProperty', function() {
   it('should return undefined if value key is not set', function() {
     expect(ShareProperty.get('iAmNotDefined')).not.toBeDefined();
   });
+
+  it('should not allow access to internal store', function() {
+    expect(ShareProperty._store).not.toBeDefined();
+  });
 });
