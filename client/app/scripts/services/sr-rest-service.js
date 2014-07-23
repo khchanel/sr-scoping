@@ -9,7 +9,7 @@
  */
 
 angular.module('srRestService', ['ngResource', 'ngStorage'])
-  .constant('SR_API_SERVER', 'http://srconstruction.khchanel.com')
+  .constant('SR_API_SERVER', 'http://srconstruction.khchanel.com/api/v1')
   .factory('Sor', ['$resource', '$localStorage', 'SR_API_SERVER',
     function($resource, $localStorage, API_SERVER) {
 
