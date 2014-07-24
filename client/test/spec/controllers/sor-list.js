@@ -52,6 +52,18 @@ describe('Controller: SorListCtrl', function () {
         .respond(testSor);
 
     scope = $rootScope.$new();
+
+    // mock a ons object
+    scope.ons = {
+      navigator: {
+        pushPage: function() {
+          return true;
+        }
+      }
+    };
+
+    spyOn(scope.ons.navigator, 'pushPage').andCallThrough();
+
     SorlistCtrl = $controller('SorListCtrl', {
       $scope: scope
     });
@@ -68,5 +80,10 @@ describe('Controller: SorListCtrl', function () {
   it('should set scope.sors[1].SORCode to MIN18400', function () {
     $httpBackend.flush();
     expect(scope.sors[1].SORCode).toBe('MIN18400');
+  });
+
+  it('should be able to change page on click', function() {
+    scope.onRowClickActivated({entity: testSor[0]});
+    expect(scope.ons.navigator.pushPage).toHaveBeenCalled();
   });
 });
