@@ -16,6 +16,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'app/bower_components/jquery/dist/jquery.js',
       'app/bower_components/angular/angular.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
       'app/bower_components/angular-animate/angular-animate.js',
@@ -25,6 +26,8 @@ module.exports = function(config) {
       'app/bower_components/angular-sanitize/angular-sanitize.js',
       'app/bower_components/angular-touch/angular-touch.js',
       'app/bower_components/ngstorage/ngStorage.js',
+      'app/bower_components/ng-grid/build/ng-grid.js',
+      'app/bower_components/ng-grid/plugins/ng-grid-flexible-height.js',
       'app/bower_components/angular-truncate/src/truncate.js',
       'app/bower_components/onsenui/build/js/onsenui.js',
       'app/scripts/**/*.js',
