@@ -1,7 +1,7 @@
 <ons-page class="center" ng-controller="SorListCtrl">
   <ons-scroller>
 
-    <h1>Showing {{(sors | filter:filterOptions.filterText).length}} of {{sors.length}}</h1>
+    <h1>Showing {{gridOptions.ngGrid.filteredRows.length}} of {{sors.length}}</h1>
 
     <ons-search-input
         ng-model="filterOptions.filterText"
