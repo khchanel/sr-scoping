@@ -33,9 +33,8 @@ angular.module('srScopingApp')
         }],
 
         multiSelect: false,
-
+        plugins: [new ngGridFlexibleHeightPlugin()],
         filterOptions: $scope.filterOptions
       };
-
     }
   ]);
