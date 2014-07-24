@@ -17,6 +17,14 @@ angular.module('srScopingApp')
         filterText: ''
       };
 
+      $scope.onRowClickActivated = function(rowItem) {
+        var sor = rowItem.entity;
+        $scope.ons.navigator.pushPage('views/sor-detail.html', {
+          title: 'SOR Task',
+          sorObj: sor
+        });
+      };
+
       $scope.gridOptions = {
         data: 'sors',
 
@@ -25,12 +33,23 @@ angular.module('srScopingApp')
           displayName: 'Code'
         }, {
           field: 'Name',
-          displayName: 'Name'
+          displayName: 'Name',
+          width: '50%'
         }, {
           field: 'Price',
           displayName: 'Price',
           cellFilter: 'currency: ""'
         }],
+
+        rowTemplate: '<div ng-click="onRowClickActivated(row)"' +
+          ' ng-style="{ \'cursor\': row.cursor }"' +
+          ' ng-repeat="col in renderedColumns"' +
+          ' ng-class="col.colIndex()"' +
+          ' class="ngCell {{col.cellClass}}">' +
+          '<div class="ngVerticalBar" ng-style="{height: rowHeight}"' +
+          ' ng-class="{ ngVerticalBarVisible: !$last }">&nbsp;</div>' +
+          '<div ng-cell></div>' +
+          '</div>',
 
         multiSelect: false,
         plugins: [new ngGridFlexibleHeightPlugin()],    // jshint ignore:line
