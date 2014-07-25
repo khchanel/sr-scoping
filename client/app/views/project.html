@@ -26,7 +26,7 @@
             <p>Client Ref:</p>
           </ons-col>
           <ons-col>
-            <p>{{project.ClientRef}}</p>
+            <p>{{project.ClientRef | notAvailable}}</p>
           </ons-col>
         </ons-row>
 
@@ -35,14 +35,14 @@
             <p>Coordinator:</p>
           </ons-col>
           <ons-col>
-            <p>{{project.Coordinator}}</p>
+            <p>{{project.Coordinator | notAvailable }}</p>
           </ons-col>
 
           <ons-col>
             <p>SLA:</p>
           </ons-col>
           <ons-col>
-            <p>{{project.SLA}}</p>
+            <p>{{project.SLA | notAvailable}}</p>
           </ons-col>
         </ons-row>
 
@@ -51,14 +51,14 @@
             <p>Start Date:</p>
           </ons-col>
           <ons-col>
-            <p>{{project.StartDate ? project.StartDate : 'N/A'}}</p>
+            <p>{{project.StartDate | notAvailable}}</p>
           </ons-col>
 
           <ons-col>
             <p>Finish Date:</p>
           </ons-col>
           <ons-col>
-            <p>{{project.FinishDate ? project.FinishDate : 'N/A'}}</p>
+            <p>{{project.FinishDate | notAvailable}}</p>
           </ons-col>
         </ons-row>
 
