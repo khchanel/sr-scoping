@@ -1,48 +1,41 @@
-<ons-navigator
-    title="Basket"
-    left-button-icon="fa fa-lg fa-bars"
-    on-left-button-click="ons.splitView.toggle()">
+<ons-page class="center" ng-controller="BasketCtrl">
 
-  <ons-page class="center" ng-controller="BasketCtrl">
+  <ons-list>
+    <h1>Showing {{searchResult.length}} of {{$storage.basket.length}}</h1>
 
-    <ons-list>
-      <h1>Showing {{searchResult.length}} of {{$storage.basket.length}}</h1>
+    <ons-search-input
+      ng-model="searchText"
+      placeholder="Search">
+    </ons-search-input>
 
-      <ons-search-input
-        ng-model="searchText"
-        placeholder="Search">
-      </ons-search-input>
+    <ons-list-item>
+      <ons-row style="color: blue">
+        <ons-col>Code</ons-col>
+        <ons-col>Price</ons-col>
+        <ons-col>Quantity</ons-col>
+      </ons-row>
+    </ons-list-item>
 
-      <ons-list-item>
-        <ons-row style="color: blue">
-          <ons-col>Code</ons-col>
-          <ons-col>Price</ons-col>
-          <ons-col>Quantity</ons-col>
-        </ons-row>
-      </ons-list-item>
+    <ons-list-item ng-repeat="task in searchResult = ($storage.basket | filter:searchText)">
+      <ons-row style="color: blue">
+        <ons-col>{{task.sor.SORCode}}</ons-col>
+        <ons-col>{{task.sor.Price | currency}}</ons-col>
+        <ons-col>{{task.quantity}}</ons-col>
+      </ons-row>
+    </ons-list-item>
 
-      <ons-list-item ng-repeat="task in searchResult = ($storage.basket | filter:searchText)">
-        <ons-row style="color: blue">
-          <ons-col>{{task.sor.SORCode}}</ons-col>
-          <ons-col>{{task.sor.Price | currency}}</ons-col>
-          <ons-col>{{task.quantity}}</ons-col>
-        </ons-row>
-      </ons-list-item>
+    <ons-list-item>
+      <ons-row>
+        <h3>Total: {{total() | currency}}</h3>
+      </ons-row>
+    </ons-list-item>
 
-      <ons-list-item>
-        <ons-row>
-          <h3>Total: {{total() | currency}}</h3>
-        </ons-row>
-      </ons-list-item>
-
-      <ons-list-item>
-        <ons-row>
-          <ons-button ng-click="clearBasket();">clear basket</ons-button>
-        </ons-row>
-      </ons-list-item>
-    </ons-list>
+    <ons-list-item>
+      <ons-row>
+        <ons-button ng-click="clearBasket();">clear basket</ons-button>
+      </ons-row>
+    </ons-list-item>
+  </ons-list>
 
 
-  </ons-page>
-
-</ons-navigator>
+</ons-page>
