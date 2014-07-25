@@ -8,13 +8,20 @@
  * Controller of the srScopingApp
  */
 angular.module('srScopingApp')
-  .controller('BasketCtrl', function ($scope, $localStorage) {
+  .controller('BasketCtrl', function ($scope, $localStorage, ShareProperty) {
     $scope.$storage = $localStorage;
+
+    var projectCode = ShareProperty.get('active_project').Code;
+    if (!$scope.$storage.baskets[projectCode]) {
+      $scope.$storage.baskets[projectCode] = [];
+    }
+    $scope.basket = $scope.$storage.baskets[projectCode];
+
 
     $scope.total = function() {
       var total = 0;
 
-      angular.forEach($scope.$storage.basket, function(task) {
+      angular.forEach($scope.basket, function(task) {
         total += task.sor.Price * task.quantity;
       });
 
@@ -22,7 +29,7 @@ angular.module('srScopingApp')
     };
 
     $scope.clearBasket = function() {
-      delete $scope.$storage.basket;
-      $scope.$storage.basket = [];
+      $scope.$storage.baskets[projectCode] = [];
+      $scope.basket = [];
     };
   });

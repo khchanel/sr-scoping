@@ -8,7 +8,7 @@
  * Controller of the srScopingApp
  */
 angular.module('srScopingApp')
-  .controller('SorDetailCtrl', function($scope, $localStorage) {
+  .controller('SorDetailCtrl', function($scope, $localStorage, ShareProperty) {
     $scope.$storage = $localStorage;
 
     $scope.sor = $scope.ons.navigator.getCurrentPage().options.sorObj;
@@ -34,7 +34,11 @@ angular.module('srScopingApp')
       };
 
       // add task to basket
-      $scope.$storage.basket.push(task);
+      var projectCode = ShareProperty.get('active_project').Code;
+      if (!$scope.$storage.baskets[projectCode]) {
+        $scope.$storage.baskets[projectCode] = [];
+      }
+      $scope.$storage.baskets[projectCode].push(task);
 
       // disable the add button to avoid re-add
       $scope.addBtnText = 'Added';
