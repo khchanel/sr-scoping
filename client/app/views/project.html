@@ -1,10 +1,72 @@
 <ons-navigator
-    ng-controller="ProjectCtrl"
     left-button-icon="fa fa-lg fa-bars"
+    title="Project Details"
     on-left-button-click="ons.splitView.toggle()">
 
-<p>This is the project view.</p>
-<p>Code: {{project.Code}}</p>
+  <ons-page ng-controller="ProjectCtrl">
+    <ons-scroller>
 
-<div ng-include="basketTemplateUrl"></div>
+      <div style="margin: 15px;">
+
+        <h2 style="text-align:center">
+          {{project.Address ? project.Address : 'NO ADDRESS'}}
+        </h2>
+
+        <br/>
+
+        <ons-row>
+          <ons-col>
+            <p>Code:</p>
+          </ons-col>
+          <ons-col>
+            <p>{{project.Code}}</p>
+          </ons-col>
+
+          <ons-col>
+            <p>Client Ref:</p>
+          </ons-col>
+          <ons-col>
+            <p>{{project.ClientRef}}</p>
+          </ons-col>
+        </ons-row>
+
+        <ons-row>
+          <ons-col>
+            <p>Coordinator:</p>
+          </ons-col>
+          <ons-col>
+            <p>{{project.Coordinator}}</p>
+          </ons-col>
+
+          <ons-col>
+            <p>SLA:</p>
+          </ons-col>
+          <ons-col>
+            <p>{{project.SLA}}</p>
+          </ons-col>
+        </ons-row>
+
+        <ons-row>
+          <ons-col>
+            <p>Start Date:</p>
+          </ons-col>
+          <ons-col>
+            <p>{{project.StartDate ? project.StartDate : 'N/A'}}</p>
+          </ons-col>
+
+          <ons-col>
+            <p>Finish Date:</p>
+          </ons-col>
+          <ons-col>
+            <p>{{project.FinishDate ? project.FinishDate : 'N/A'}}</p>
+          </ons-col>
+        </ons-row>
+
+      </div>
+
+      <div ng-include="basketTemplateUrl"></div>
+
+    </ons-scroller>
+  </ons-page>
+
 </ons-navigator>
