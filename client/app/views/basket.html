@@ -1,6 +1,6 @@
-<ons-page class="center" ng-controller="BasketCtrl">
+<div class="center" ng-controller="BasketCtrl">
 
-  <ons-list>
+  <ul>
     <h1>Showing {{searchResult.length}} of {{$storage.basket.length}}</h1>
 
     <ons-search-input
@@ -35,7 +35,7 @@
         <ons-button ng-click="clearBasket();">clear basket</ons-button>
       </ons-row>
     </ons-list-item>
-  </ons-list>
+  </ul>
 
 
-</ons-page>
+</div>
