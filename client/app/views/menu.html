@@ -1,5 +1,5 @@
 <ons-page ng-controller="MenuCtrl">
-
+  <ons-scroller>
     <ul class="topcoat-list">
 
         <ons-list-item
@@ -33,10 +33,11 @@
       <ons-list-item
           class="topcoat-list__item--tappable topcoat-list__item__line-height"
           ng-click="ons.splitView.toggle();
-              ons.splitView.setMainPage('views/basket.html')">
+              setActiveProject(proj);
+              ons.splitView.setMainPage('views/project.html')">
           <i class="fa fa-file fa-lg" style="color: #666"></i>
           &nbsp; #{{proj.Code}}# {{proj.Address | characters:25:true}}
       </ons-list-item>
     </ul>
-
+  </ons-scroller>
 </ons-page>

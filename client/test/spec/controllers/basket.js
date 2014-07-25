@@ -6,7 +6,8 @@ describe('Controller: BasketCtrl', function () {
   beforeEach(module('srScopingApp'));
 
   var BasketCtrl,
-    scope;
+    scope,
+    ShareProperty;
 
   // data used for testing
   // note that the SOR price has been modified from original
@@ -49,29 +50,56 @@ describe('Controller: BasketCtrl', function () {
       'quantity': 2
     }];
 
+  var testProject = {
+    'Address': '1\/69-71 Isabella Street, PARRAMATTA, NSW, 2150',
+    'Client': 'New South Wales Land & Housing Corporation',
+    'ClientRef': '241013',
+    'Code': 59008,
+    'ContractorRef': null,
+    'Coordinator': 'Nelson Chan',
+    'Duration': null,
+    'Finish': '03\/07\/2014',
+    'FinishDate': null,
+    'Instructions': '',
+    'MasterCode': null,
+    'SLA': null,
+    'Start': '25\/05\/2014',
+    'StartDate': null,
+    'Status': 'New',
+    'SubClient': null,
+    'TaskType': null
+  };
+
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, _ShareProperty_) {
+    ShareProperty = _ShareProperty_;
+    ShareProperty.set('active_project', testProject);
+
+    spyOn(ShareProperty, 'get').andCallThrough();
+
     scope = $rootScope.$new();
     BasketCtrl = $controller('BasketCtrl', {
       $scope: scope
     });
   }));
 
-  it('should have instantiated $storage.basket', function () {
-    expect(scope.$storage.basket).toBeDefined();
-    expect(scope.$storage.basket.length).toBe(0);
+  it('should have instantiated basket', function () {
+    expect(ShareProperty.get).toHaveBeenCalledWith('active_project');
+    expect(scope.basket).toBeDefined();
+    expect(scope.basket.length).toBe(0);
   });
 
   it('should be able to calculate total', function () {
-    scope.$storage.basket.push.apply(scope.$storage.basket, testTasks);
-    expect(scope.$storage.basket.length).toBe(2);
+    // prepare test data in basket
+    scope.basket.push.apply(scope.basket, testTasks);
+    expect(scope.basket.length).toBe(2);
 
     // verify the basket after append
-    expect(scope.$storage.basket[0].sor.SORCode).toBe('MIN18400');
-    expect(scope.$storage.basket[1].sor.SORCode).toBe(testTasks[1].sor.SORCode);
+    expect(scope.basket[0].sor.SORCode).toBe('MIN18400');
+    expect(scope.basket[1].sor.SORCode).toBe(testTasks[1].sor.SORCode);
 
     // check total
-    expect(scope.total()).toBe(83);
+    expect(scope.total()).toBe(83); // do the math on testTasks sum(price * quantity)
     expect(scope.total()).toBe(
       testTasks[0].sor.Price * testTasks[0].quantity +
         testTasks[1].sor.Price * testTasks[1].quantity
@@ -79,17 +107,17 @@ describe('Controller: BasketCtrl', function () {
   });
 
   it('total should return zero if basket has no item', function() {
-    expect(scope.$storage.basket.length).toBe(0);
+    expect(scope.basket.length).toBe(0);
     expect(scope.total()).toBe(0);
   });
 
 
   it('should be able to clear basket', function () {
-    scope.$storage.basket.push.apply(scope.$storage.basket, testTasks);
-    expect(scope.$storage.basket.length).toBe(2);
+    scope.basket.push.apply(scope.basket, testTasks);
+    expect(scope.basket.length).toBe(2);
 
     scope.clearBasket();
 
-    expect(scope.$storage.basket.length).toBe(0);
+    expect(scope.basket.length).toBe(0);
   });
 });

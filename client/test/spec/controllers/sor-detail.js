@@ -6,7 +6,8 @@ describe('Controller: SorDetailCtrl', function () {
   beforeEach(module('srScopingApp'));
 
   var SorDetailCtrl,
-    scope;
+    scope,
+    ShareProperty;
 
   var testSor = {
     SORCode: 'MIN18350',
@@ -25,9 +26,34 @@ describe('Controller: SorDetailCtrl', function () {
     Photo: '~\\Files\\SOR\\1c8dbe4709ae44a388f6dee379a8f0bc.jpg'
   };
 
+  var testProject = {
+    'Address': '1\/69-71 Isabella Street, PARRAMATTA, NSW, 2150',
+    'Client': 'New South Wales Land & Housing Corporation',
+    'ClientRef': '241013',
+    'Code': 59005,
+    'ContractorRef': null,
+    'Coordinator': 'Nelson Chan',
+    'Duration': null,
+    'Finish': '03\/07\/2014',
+    'FinishDate': null,
+    'Instructions': '',
+    'MasterCode': null,
+    'SLA': null,
+    'Start': '25\/05\/2014',
+    'StartDate': null,
+    'Status': 'New',
+    'SubClient': null,
+    'TaskType': null
+  };
+
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, _ShareProperty_) {
+
+    ShareProperty = _ShareProperty_;
+    ShareProperty.set('active_project', testProject);
+
+    spyOn(ShareProperty, 'get').andCallThrough();
 
     scope = $rootScope.$new();
 
@@ -50,6 +76,12 @@ describe('Controller: SorDetailCtrl', function () {
     });
   }));
 
+  it('should have active project code set', function() {
+    expect(scope.projectCode).toBeDefined();
+    expect(scope.projectCode).toBe(testProject.Code);
+    expect(ShareProperty.get).toHaveBeenCalledWith('active_project');
+  });
+
   it ('should show all sor content', function () {
     expect(scope.sor.SORCode).toBe(testSor.SORCode);
   });
@@ -64,10 +96,14 @@ describe('Controller: SorDetailCtrl', function () {
     expect(scope.comment).toBeDefined();
   });
 
+  it('should have $storage.baskets defined', function() {
+    expect(scope.$storage.baskets).toBeDefined();
+    expect(typeof scope.$storage.baskets).toBe('object');
+  });
+
 
   it('should be able to add task to basket', function () {
-    expect(scope.$storage.basket).toBeDefined();
-    expect(scope.$storage.basket.length).toBe(0);
+    expect(scope.$storage.baskets[testProject.Code]).not.toBeDefined();
 
     var myquantity = 3;
     var mycomment = 'need special care';
@@ -76,10 +112,13 @@ describe('Controller: SorDetailCtrl', function () {
     scope.comment = mycomment;
     scope.addTask();
 
-    expect(scope.$storage.basket.length).toBe(1);
-    expect(scope.$storage.basket[0].sor.SORCode).toBe(testSor.SORCode);
-    expect(scope.$storage.basket[0].quantity).toBe(myquantity);
-    expect(scope.$storage.basket[0].comment).toBe(mycomment);
+    expect(ShareProperty.get).toHaveBeenCalledWith('active_project');
+    expect(scope.projectCode).toBe(testProject.Code);
+
+    expect(scope.$storage.baskets[testProject.Code].length).toBe(1);
+    expect(scope.$storage.baskets[testProject.Code][0].sor.SORCode).toBe(testSor.SORCode);
+    expect(scope.$storage.baskets[testProject.Code][0].quantity).toBe(myquantity);
+    expect(scope.$storage.baskets[testProject.Code][0].comment).toBe(mycomment);
 
   });
 

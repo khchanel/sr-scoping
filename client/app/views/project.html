@@ -1,0 +1,72 @@
+<ons-navigator
+    left-button-icon="fa fa-lg fa-bars"
+    title="Project Details"
+    on-left-button-click="ons.splitView.toggle()">
+
+  <ons-page ng-controller="ProjectCtrl">
+    <ons-scroller>
+
+      <div style="margin: 15px;">
+
+        <h2 style="text-align:center">
+          {{project.Address ? project.Address : 'NO ADDRESS'}}
+        </h2>
+
+        <br/>
+
+        <ons-row>
+          <ons-col>
+            <p>Code:</p>
+          </ons-col>
+          <ons-col>
+            <p>{{project.Code}}</p>
+          </ons-col>
+
+          <ons-col>
+            <p>Client Ref:</p>
+          </ons-col>
+          <ons-col>
+            <p>{{project.ClientRef | notAvailable}}</p>
+          </ons-col>
+        </ons-row>
+
+        <ons-row>
+          <ons-col>
+            <p>Coordinator:</p>
+          </ons-col>
+          <ons-col>
+            <p>{{project.Coordinator | notAvailable }}</p>
+          </ons-col>
+
+          <ons-col>
+            <p>SLA:</p>
+          </ons-col>
+          <ons-col>
+            <p>{{project.SLA | notAvailable}}</p>
+          </ons-col>
+        </ons-row>
+
+        <ons-row>
+          <ons-col>
+            <p>Start Date:</p>
+          </ons-col>
+          <ons-col>
+            <p>{{project.StartDate | notAvailable}}</p>
+          </ons-col>
+
+          <ons-col>
+            <p>Finish Date:</p>
+          </ons-col>
+          <ons-col>
+            <p>{{project.FinishDate | notAvailable}}</p>
+          </ons-col>
+        </ons-row>
+
+      </div>
+
+      <div ng-include="basketTemplateUrl"></div>
+
+    </ons-scroller>
+  </ons-page>
+
+</ons-navigator>

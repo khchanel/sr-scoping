@@ -48,6 +48,10 @@ angular
         templateUrl: 'views/basket.html',
         controller: 'BasketCtrl'
       })
+      .when('/project', {
+        templateUrl: 'views/project.html',
+        controller: 'ProjectCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -60,7 +64,7 @@ angular
         name: '',
         passwd: ''
       },
-      basket: []
+      baskets: {}
     });
 
     // handle back button on android
