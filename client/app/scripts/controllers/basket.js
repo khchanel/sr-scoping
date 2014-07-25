@@ -10,12 +10,14 @@
 angular.module('srScopingApp')
   .controller('BasketCtrl', function ($scope, $localStorage, ShareProperty) {
     $scope.$storage = $localStorage;
+    var project = ShareProperty.get('active_project').Code;
 
-    var projectCode = ShareProperty.get('active_project').Code;
-    if (!$scope.$storage.baskets[projectCode]) {
-      $scope.$storage.baskets[projectCode] = [];
+    // fetch a basket for the project
+    if (typeof $scope.$storage.baskets[project] === 'undefined') {
+      $scope.$storage.baskets[project] = [];
     }
-    $scope.basket = $scope.$storage.baskets[projectCode];
+
+    $scope.basket = $scope.$storage.baskets[project];
 
 
     $scope.total = function() {
@@ -29,7 +31,7 @@ angular.module('srScopingApp')
     };
 
     $scope.clearBasket = function() {
-      $scope.$storage.baskets[projectCode] = [];
+      $scope.$storage.baskets[project] = [];
       $scope.basket = [];
     };
   });

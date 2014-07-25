@@ -64,7 +64,7 @@ angular
         name: '',
         passwd: ''
       },
-      baskets: []
+      baskets: {}
     });
 
     // handle back button on android
