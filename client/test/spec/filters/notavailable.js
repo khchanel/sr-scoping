@@ -21,7 +21,7 @@ describe('Filter: notAvailable', function() {
   });
 
   it('should return original input for non-empty input', function() {
-    var inputs = ['angularjs', 1234];
+    var inputs = ['angularjs', 1234, 0];
 
     angular.forEach(inputs, function(value) {
       expect(notAvailable(value)).toBe(value);
