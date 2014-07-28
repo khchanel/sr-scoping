@@ -6,7 +6,7 @@
   <ons-page ng-controller="ProjectCtrl">
     <ons-scroller>
 
-      <div style="margin: 15px;">
+      <div style="margin: 10px;">
 
         <h2 style="text-align:center">
           {{project.Address ? project.Address : 'NO ADDRESS'}}
@@ -64,7 +64,7 @@
 
       </div>
 
-      <div ng-include="basketTemplateUrl"></div>
+      <div style="width:90%" ng-include="basketTemplateUrl"></div>
 
     </ons-scroller>
   </ons-page>
