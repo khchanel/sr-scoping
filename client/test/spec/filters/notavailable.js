@@ -12,17 +12,20 @@ describe('Filter: notAvailable', function() {
   }));
 
   it('should return string "N/A" for empty input', function() {
-    var text = 'angularjs';
-    var num = 1234;
     var naArr = [null, '', false];
-
-    expect(notAvailable(text)).toBe(text);
-    expect(notAvailable(num)).toBe(num);
 
     angular.forEach(naArr, function(value) {
       expect(notAvailable(value)).toBe('N/A');
     });
 
+  });
+
+  it('should return original input for non-empty input', function() {
+    var inputs = ['angularjs', 1234];
+
+    angular.forEach(inputs, function(value) {
+      expect(notAvailable(value)).toBe(value);
+    });
   });
 
 });
