@@ -9,12 +9,19 @@
     </ons-search-input>
 
     <ons-list-item>
+      <ons-button type="quiet" ng-click="ons.navigator.pushPage('views/sor-list.html', {title: 'SOR List'})">
+        <ons-icon icon="plus-circle" size="2x" style="margin-top: 5px"></ons-icon>
+      </ons-button>
+    </ons-list-item>
+
+    <ons-list-item>
       <ons-row style="color: blue">
         <ons-col>Code</ons-col>
         <ons-col>Price</ons-col>
         <ons-col>Quantity</ons-col>
       </ons-row>
     </ons-list-item>
+
 
     <ons-list-item ng-repeat="task in searchResult = (basket | filter:searchText)">
       <ons-row style="color: blue">
