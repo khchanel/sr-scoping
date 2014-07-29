@@ -62,7 +62,7 @@ describe('Controller: SorListCtrl', function () {
       }
     };
 
-    spyOn(scope.ons.navigator, 'pushPage').andCallThrough();
+    spyOn(scope.ons.navigator, 'pushPage').and.callThrough();
 
     SorlistCtrl = $controller('SorListCtrl', {
       $scope: scope

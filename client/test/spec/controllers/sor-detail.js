@@ -53,7 +53,7 @@ describe('Controller: SorDetailCtrl', function () {
     ShareProperty = _ShareProperty_;
     ShareProperty.set('active_project', testProject);
 
-    spyOn(ShareProperty, 'get').andCallThrough();
+    spyOn(ShareProperty, 'get').and.callThrough();
 
     scope = $rootScope.$new();
 

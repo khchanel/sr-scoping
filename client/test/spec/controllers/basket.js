@@ -75,7 +75,7 @@ describe('Controller: BasketCtrl', function () {
     ShareProperty = _ShareProperty_;
     ShareProperty.set('active_project', testProject);
 
-    spyOn(ShareProperty, 'get').andCallThrough();
+    spyOn(ShareProperty, 'get').and.callThrough();
 
     scope = $rootScope.$new();
     BasketCtrl = $controller('BasketCtrl', {
@@ -130,7 +130,7 @@ describe('Controller: BasketCtrl', function () {
       mywindow = $window;
 
       // mock cancel confirmation
-      spyOn(mywindow, 'confirm').andReturn(false);
+      spyOn(mywindow, 'confirm').and.returnValue(false);
 
       BasketCtrl = $controller('BasketCtrl', {
         $scope: scope,
