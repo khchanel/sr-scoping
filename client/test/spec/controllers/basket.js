@@ -120,4 +120,34 @@ describe('Controller: BasketCtrl', function () {
 
     expect(scope.basket.length).toBe(0);
   });
+
+
+  describe('BasketCtrl: using window object', function() {
+    var mywindow;
+
+    // Initialize the controller and a mock scope
+    beforeEach(inject(function ($window, $controller) {
+      mywindow = $window;
+
+      // mock cancel confirmation
+      spyOn(mywindow, 'confirm').andReturn(false);
+
+      BasketCtrl = $controller('BasketCtrl', {
+        $scope: scope,
+        $window: mywindow
+      });
+    }));
+
+    it('should confirm before clearing basket', function() {
+      // prepare some items in basket
+      scope.basket.push.apply(scope.basket, testTasks);
+      expect(scope.basket.length).toBe(testTasks.length);
+
+      // run clear confirm
+      scope.confirmClearBasket();
+      expect(mywindow.confirm).toHaveBeenCalled();
+
+      expect(scope.basket.length).toBe(testTasks.length);
+    });
+  });
 });

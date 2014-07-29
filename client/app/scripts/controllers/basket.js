@@ -8,7 +8,7 @@
  * Controller of the srScopingApp
  */
 angular.module('srScopingApp')
-  .controller('BasketCtrl', function ($scope, $localStorage, ShareProperty) {
+  .controller('BasketCtrl', function ($scope, $window, $localStorage, ShareProperty) {
     $scope.$storage = $localStorage;
     var project = ShareProperty.get('active_project').Code;
 
@@ -33,5 +33,13 @@ angular.module('srScopingApp')
     $scope.clearBasket = function() {
       $scope.$storage.baskets[project] = [];
       $scope.basket = [];
+    };
+
+    $scope.confirmClearBasket = function() {
+      var confirm = $window.confirm('Are you sure you want to clear basket?');
+
+      if(confirm) {
+        $scope.clearBasket();
+      }
     };
   });
