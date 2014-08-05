@@ -29,6 +29,7 @@ describe('Controller: BasketCtrl', function () {
         'Location': 'AIRL',
         'Photo': ''
       },
+      'comment': 'need replacement',
       'quantity': 7
     }, {
       'sor': {
@@ -47,6 +48,7 @@ describe('Controller: BasketCtrl', function () {
         'Location': '',
         'Photo': ''
       },
+      'comment': '',
       'quantity': 2
     }];
 
