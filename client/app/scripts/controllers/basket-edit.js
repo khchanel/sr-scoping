@@ -8,9 +8,8 @@
  * Controller of the srScopingApp
  */
 angular.module('srScopingApp')
-  .controller('BasketEditCtrl', function ($scope, $localStorage, ShareProperty) {
+  .controller('BasketEditCtrl', function ($scope, $localStorage) {
     $scope.$storage = $localStorage;
-    $scope.projectCode = ShareProperty.get('active_project').Code;
 
     $scope.storedTask = $scope.ons.navigator.getCurrentPage().options.taskObj;
 
