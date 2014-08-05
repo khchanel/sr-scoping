@@ -8,8 +8,7 @@
  * Controller of the srScopingApp
  */
 angular.module('srScopingApp')
-  .controller('BasketEditCtrl', function ($scope, $localStorage) {
-    $scope.$storage = $localStorage;
+  .controller('BasketEditCtrl', function ($scope) {
 
     $scope.storedTask = $scope.ons.navigator.getCurrentPage().options.taskObj;
 
