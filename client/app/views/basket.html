@@ -24,7 +24,9 @@
     </ons-list-item>
 
 
-    <ons-list-item ng-repeat="task in searchResult = (basket | filter:searchText)">
+    <ons-list-item
+        ng-repeat="task in searchResult = (basket | filter:searchText)"
+        ng-click="ons.navigator.pushPage('views/basket-edit.html', {title: 'Task', taskObj: task})">
       <ons-row>
         <ons-col>{{task.sor.SORCode}}</ons-col>
         <ons-col>{{task.sor.Location | notAvailable}}</ons-col>
@@ -39,12 +41,10 @@
       </ons-row>
     </ons-list-item>
 
-    <ons-list-item>
-      <ons-row>
-        <ons-button ng-click="confirmClearBasket();">clear basket</ons-button>
-      </ons-row>
-    </ons-list-item>
   </ul>
-
+  <br/>
+  <ons-row>
+    <ons-button ng-click="confirmClearBasket();">clear basket</ons-button>
+  </ons-row>
 
 </div>
