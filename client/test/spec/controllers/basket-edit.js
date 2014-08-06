@@ -9,7 +9,7 @@ describe('Controller: BasketEditCtrl', function() {
     scope;
 
 
-  var testTask = {
+  var mockBasketData = [{
     'sor': {
       'SORCode': 'MIN18400',
       'Tradecode': '',
@@ -28,7 +28,45 @@ describe('Controller: BasketEditCtrl', function() {
     },
     'comment': 'need replacement',
     'quantity': 7
-  };
+  }, {
+    'sor': {
+      'SORCode': 'MIN18750',
+      'Tradecode': '',
+      'UomCode': 'Post.',
+      'Name': '(Renew Newel Post including concreting up to 1.5metres)',
+      'LongDescription': 'Remove and dispose of existing and supply and fix newel post including concreting - painted to match, 1 coat sealer, and two finish coats.  Minimum 100 x 100mm D.A.R. Hardwood - up to 1.5 metres.  Includes refixing of any existing rails, bolts etc.',
+      'Status': 'False',
+      'Price201213': '10',
+      'Price': '10',
+      'Warranty': '0',
+      'Manual': '0',
+      'Deleted': '0',
+      'Code': '614',
+      'Location': '',
+      'Photo': ''
+    },
+    'comment': '',
+    'quantity': 2
+  }, {
+    "SORCode": "MIN18650",
+    "Tradecode": "",
+    "UomCode": "Each.",
+    "Name": "(Renew Hardwood Tread 250 wide - up to 1.1m long)",
+    "LongDescription": "Remove and dispose of existing and supply and fix hardwood tread 250 wide - up to 1.1m long including Remove and dispose of existing and supply and fix tie bolt.  Minimum finished thickness 38mm.  Tread to have 5mm fall towards external of dwelling.",
+    "Status": "False",
+    "Price201213": "9.999999999",
+    "Price": "9.999999999",
+    "Warranty": "0",
+    "Manual": "0",
+    "Deleted": "0",
+    "Code": "612",
+    "Location": "",
+    "Photo": ""
+  }];
+
+  var testBasket = angular.copy(mockBasketData);
+  var testTask = testBasket[0];
+
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function($controller, $rootScope) {
@@ -40,9 +78,14 @@ describe('Controller: BasketEditCtrl', function() {
         getCurrentPage: function() {
           return {
             options: {
-              taskObj: testTask
+              taskObj: testTask,
+              basketObj: testBasket
             }
           };
+        },
+        popPage: function() {
+          // navigate to previous page mock
+          return;
         }
       }
     };
@@ -74,4 +117,55 @@ describe('Controller: BasketEditCtrl', function() {
 
     expect(angular.equals(scope.task, scope.storedTask)).toBe(false);
   });
+
+
+  it('should be able to delete stored task from basket', function() {
+    expect(scope.basket.length).toBe(3);
+
+    scope.deleteTask();
+
+    expect(scope.basket.length).toBe(2);
+
+    // mockBasketData contains the original
+    // testBasket should be referenced by the scope.basket so they are the same thing
+    expect(angular.equals(scope.basket[1], mockBasketData[1])).toBe(false);
+    expect(testBasket.length).toBe(2);
+  });
+
+  describe('BasketEditCtrl: using window object', function() {
+    var mywindow;
+
+    // Initialize the controller and a mock scope
+    beforeEach(inject(function($window, $controller) {
+      mywindow = $window;
+
+      // mock cancel confirmation
+      spyOn(mywindow, 'confirm').and.returnValue(false);
+
+      BasketEditCtrl = $controller('BasketEditCtrl', {
+        $scope: scope,
+        $window: mywindow
+      });
+    }));
+
+
+    it('should confirm before delete', function() {
+      /* NOTE:
+       * for some reason testBasket is not reset to original
+       * the testBasket here is in the state of the previous test (with 1 item deleted)
+       */
+
+      var basketSize = testBasket.length;
+
+      expect(scope.basket.length).toBe(basketSize);
+
+      // run clear confirm
+      scope.confirmDelete();
+      expect(mywindow.confirm).toHaveBeenCalled();
+
+      expect(scope.basket.length).toBe(basketSize);
+    });
+  });
+
+
 });

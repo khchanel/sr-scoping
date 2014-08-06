@@ -95,6 +95,10 @@
             <button id="save-task-btn" ng-class="saveBtnClass" ng-click="saveTask()" ng-disabled="editForm.$invalid || saved">
               {{saveBtnText}}
             </button>
+
+            <button id="delete-task-btn" ng-click="confirmDelete()" class="topcoat-button" style="background-color: #E83333; margin-left:15px">
+              Delete
+            </button>
           </ons-col>
         </ons-row>
       </form>
