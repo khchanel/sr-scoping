@@ -28,7 +28,11 @@ angular.module('srRestService', ['ngResource', 'ngStorage'])
   ])
   .factory('Project', ['$resource', '$localStorage', 'SR_API_SERVER',
     function($resource, $localStorage, API_SERVER) {
-      return $resource(API_SERVER + '/projects/services/projects.svc/GetProjectsMethod/inputStr/:user/:passwd', {
+      // Stream legacy
+      //return $resource(API_SERVER + '/projects/services/projects.svc/GetProjectsMethod/inputStr/:user/:passwd', {
+
+      return $resource(API_SERVER + '/project', {
+
         user: function() {
           return $localStorage.user.name;
         },

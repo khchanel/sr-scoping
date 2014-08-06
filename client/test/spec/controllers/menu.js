@@ -43,8 +43,11 @@ describe('Controller: MenuCtrl', function () {
     // mock http requests
     $httpBackend = _$httpBackend_;
       $httpBackend.expectGET(new RegExp(SR_API_SERVER +
-        '/projects/services/projects.svc/GetProjectsMethod/inputStr/' +
-        testUser.name + '/' + testUser.passwd + '?.*')
+        '/project'
+        // Stream legacy
+        //'/projects/services/projects.svc/GetProjectsMethod/inputStr/' +
+        //testUser.name + '/' + testUser.passwd + '?.*'
+        )
       )
       .respond(testProjects);
 
