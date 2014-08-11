@@ -12,7 +12,7 @@ angular.module('srScopingApp')
     function($scope, Sor) {
 
       /* Initial data fetch */
-      $scope.query = Sor.query({'per_page': 15}, function() {
+      $scope.query = Sor.query({'page': 1, 'per_page': 15}, function() {
         $scope.sors = $scope.query.data;
         $scope.totalServerItems = $scope.query.total;
       });
