@@ -42,6 +42,16 @@ describe('Controller: SorListCtrl', function () {
       'Photo': ''
     }];
 
+  var mockResource = {
+    'total': 2,
+    'per_page': 10,
+    'current_page': 1,
+    'last_page': 1,
+    'from': 1,
+    'to': 2,
+    'data': testSor
+  };
+
 
 
   // Initialize the controller and a mock scope
@@ -49,7 +59,7 @@ describe('Controller: SorListCtrl', function () {
 
     $httpBackend = _$httpBackend_;
       $httpBackend.expectGET(new RegExp(SR_API_SERVER + '/sor?.*'))
-        .respond(testSor);
+        .respond(mockResource);
 
     scope = $rootScope.$new();
 

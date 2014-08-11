@@ -11,7 +11,9 @@ angular.module('srScopingApp')
   .controller('SorListCtrl', ['$scope', 'Sor',
     function($scope, Sor) {
 
-      $scope.sors = Sor.query();
+      $scope.query = Sor.query(function() {
+        $scope.sors = $scope.query.data;
+      });
 
       $scope.filterOptions = {
         filterText: ''
