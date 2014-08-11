@@ -23,6 +23,8 @@ angular.module('srRestService', ['ngResource', 'ngStorage'])
         passwd: function() {
           return $localStorage.user.passwd;
         }
+      }, { /* custom methods */
+        query: {method: 'get', isArray: false}
       });
     }
   ])

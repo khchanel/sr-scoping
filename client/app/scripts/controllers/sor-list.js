@@ -11,11 +11,42 @@ angular.module('srScopingApp')
   .controller('SorListCtrl', ['$scope', 'Sor',
     function($scope, Sor) {
 
-      $scope.sors = Sor.query();
+      /* Initial data fetch */
+      $scope.query = Sor.query({'page': 1, 'per_page': 15}, function() {
+        $scope.sors = $scope.query.data;
+        $scope.totalServerItems = $scope.query.total;
+      });
 
+      /* define ngGrid configurations */
       $scope.filterOptions = {
+        useExternalFilter: false,
         filterText: ''
       };
+      $scope.pagingOptions = {
+        pageSizes: [15, 30, 50],
+        pageSize: 15,
+        currentPage: 1
+      };
+
+      /* watch for page change */
+      $scope.$watch('pagingOptions', function(newVal, oldVal) {
+
+        /* skip if no change */
+        if (angular.equals(newVal, oldVal)) {
+          return;
+        }
+
+        /* fetch data for new page */
+        $scope.query = Sor.query({
+            'page': newVal.currentPage,
+            'per_page': newVal.pageSize
+          }, function() {
+            $scope.sors = $scope.query.data;
+            $scope.totalServerItems = $scope.query.total;
+          }
+        );
+      }, true); // true for object comparison :)
+
 
       $scope.onRowClickActivated = function(rowItem) {
         var sor = rowItem.entity;
@@ -53,6 +84,10 @@ angular.module('srScopingApp')
 
         multiSelect: false,
         plugins: [new ngGridFlexibleHeightPlugin()],    // jshint ignore:line
+        enablePaging: true,
+        totalServerItems: 'totalServerItems',
+        pagingOptions: $scope.pagingOptions,
+        showFooter: true,
         filterOptions: $scope.filterOptions
       };
     }
