@@ -1,6 +1,13 @@
 // bower:scss
 // endbower
 
+$grid-border-color: rgb(212,212,212);
+$warning-red: #d23333;
+
 .sor-grid {
-    border: 1px solid rgb(212,212,212);
+    border: 1px solid $grid-border-color;
+}
+
+.delete-btn {
+  background-color: $warning-red;
 }
