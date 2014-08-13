@@ -64,7 +64,7 @@ angular.module('srScopingApp')
           displayName: 'Code'
         }, {
           field: 'Name',
-          displayName: 'Name',
+          displayName: 'Short description',
           width: '50%'
         }, {
           field: 'Price',
