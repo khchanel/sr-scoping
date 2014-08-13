@@ -4,10 +4,20 @@
 $grid-border-color: rgb(212,212,212);
 $warning-red: #d23333;
 
+$base-color: #efeff4;
+$back-color: #d9d9d9;
+$front-color: #ffffff;
+
 .sor-grid {
-    border: 1px solid $grid-border-color;
+  border: 1px solid $grid-border-color;
 }
 
 .delete-btn {
   background-color: $warning-red;
+}
+
+.basket-item {
+  :hover {
+    background-color: $back-color;
+  }
 }
