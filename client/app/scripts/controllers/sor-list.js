@@ -94,7 +94,7 @@ angular.module('srScopingApp')
 
         $scope.showing.start = start;
         $scope.showing.end = end;
-      }
+      };
 
 
       /* Row click handler */
