@@ -18,8 +18,8 @@ angular.module('srScopingApp')
       };
 
       $scope.pagingOptions = {
-        pageSizes: [15, 30, 50],
-        pageSize: 15,
+        pageSizes: [10, 25, 50],
+        pageSize: 10,
         currentPage: 1
       };
 
