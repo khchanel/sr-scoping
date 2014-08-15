@@ -115,14 +115,14 @@ describe('Controller: SorListCtrl', function () {
 
   it('shoudl have defined major ngGrid configuration', function() {
     expect(scope.gridOptions).toBeDefined();
-    expect(scope.sors).toBeDefined;
+    expect(scope.sors).toBeDefined();
     expect(scope.gridOptions.data).toBe('sors');
 
     // pagination
     expect(scope.gridOptions.enablePaging).toBe(true);
-    expect(scope.gridOptions.pagingOptions == scope.pagingOptions).toBe(true);
+    expect(scope.gridOptions.pagingOptions === scope.pagingOptions).toBe(true);
 
     // filter
-    expect(scope.gridOptions.filterOptions == scope.filterOptions).toBe(true);
+    expect(scope.gridOptions.filterOptions === scope.filterOptions).toBe(true);
   });
 });
