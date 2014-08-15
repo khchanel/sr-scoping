@@ -114,8 +114,10 @@ describe('Controller: SorListCtrl', function () {
   });
 
   it('shoudl have defined major ngGrid configuration', function() {
-    expect(scope.gridOptions).toBeDefined();
+    $httpBackend.flush();
     expect(scope.sors).toBeDefined();
+
+    expect(scope.gridOptions).toBeDefined();
     expect(scope.gridOptions.data).toBe('sors');
 
     // pagination
