@@ -2,9 +2,12 @@
 
 class SorsController extends \BaseController {
 
+    private $sors;
 
-    public function __construct()
+    public function __construct(ISorRepo $sors)
     {
+        $this->sors = $sors;
+
         header('Access-Control-Allow-Origin: *');
     }
 
@@ -16,6 +19,7 @@ class SorsController extends \BaseController {
      * GET /sor?location=AIRL
      * GET /sor?page=1
      * GET /sor?per_page=20
+     * GET /sor?keyword=flooring
      *
      * Can mix and match parameters
      *
@@ -24,12 +28,28 @@ class SorsController extends \BaseController {
     public function index()
     {
         // init eloquent query
-        $sors = Sor::getQuery();
+        $sors = $this->sors->getQuery();
 
         // filter location
         if (Input::has('location')) {
             $loc = Input::get('location');
             $sors = $sors->where('Location', 'LIKE', "%$loc%");
+        }
+
+        // search by keyword
+        if (Input::has('keyword')) {
+            $keyword = Input::get('keyword');
+
+            $sors = $sors->where(function($sors) use ($keyword) {
+                // SORCode
+                // Name
+                // LongDescription
+                // Location
+                $sors->where('SORCode', 'LIKE', "%$keyword%")
+                    ->orWhere('Name', 'LIKE', "%$keyword%")
+                    ->orWhere('LongDescription', 'LIKE', "%$keyword%")
+                    ->orWhere('Location', 'LIKE', "%$keyword%");
+            });
         }
 
         // paginate result
@@ -39,6 +59,7 @@ class SorsController extends \BaseController {
         } else {
             $sors = $sors->get();
         }
+
 
         return Response::json($sors);
     }
@@ -52,7 +73,7 @@ class SorsController extends \BaseController {
      */
     public function show($code)
     {
-        $sor = Sor::find($code);
+        $sor = $this->sors->findByCode($code);
         return Response::json($sor);
     }
 
