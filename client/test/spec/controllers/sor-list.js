@@ -96,4 +96,33 @@ describe('Controller: SorListCtrl', function () {
     scope.onRowClickActivated({entity: testSor[0]});
     expect(scope.ons.navigator.pushPage).toHaveBeenCalled();
   });
+
+  it('should have defined fetch function', function() {
+    expect(scope.fetch).toBeDefined();
+  });
+
+  it('should have defined ngGrid pagingOptions', function() {
+    expect(scope.pagingOptions).toBeDefined();
+    expect(scope.pagingOptions.pageSize).toBe(10);
+    expect(scope.pagingOptions.currentPage).toBe(1);
+  });
+
+  it('should have defined ngGrid filterOptions', function() {
+    expect(scope.filterOptions).toBeDefined();
+    expect(scope.filterOptions.filterText).toBeDefined();
+    expect(scope.filterOptions.useExternalFilter).toBe(false);
+  });
+
+  it('shoudl have defined major ngGrid configuration', function() {
+    expect(scope.gridOptions).toBeDefined();
+    expect(scope.sors).toBeDefined;
+    expect(scope.gridOptions.data).toBe('sors');
+
+    // pagination
+    expect(scope.gridOptions.enablePaging).toBe(true);
+    expect(scope.gridOptions.pagingOptions == scope.pagingOptions).toBe(true);
+
+    // filter
+    expect(scope.gridOptions.filterOptions == scope.filterOptions).toBe(true);
+  });
 });
