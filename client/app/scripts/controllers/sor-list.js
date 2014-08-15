@@ -8,8 +8,8 @@
  * Controller of the srScopingApp
  */
 angular.module('srScopingApp')
-  .controller('SorListCtrl', ['$scope', 'Sor',
-    function($scope, Sor) {
+  .controller('SorListCtrl', ['$scope', '$timeout', 'Sor',
+    function($scope, $timeout, Sor) {
 
       /* ngGrid configurations */
       $scope.filterOptions = {
@@ -122,6 +122,7 @@ angular.module('srScopingApp')
 
 
       /* watch for search filter change */
+      var filterTextTimeout;
       $scope.$watch('filterOptions.filterText', function(newVal, oldVal) {
 
         /* skip no change */
@@ -129,9 +130,17 @@ angular.module('srScopingApp')
           return;
         }
 
-        /* query web service */
-        $scope.fetch();
+        /* cancel previous timeout promise */
+        if (filterTextTimeout) {
+          $timeout.cancel(filterTextTimeout);
+        }
 
+        /* make timeout action*/
+        filterTextTimeout = $timeout(function() {
+          /* query web service */
+          $scope.fetch();
+
+        }, 500); // delay in ms
       });
 
 
