@@ -22,12 +22,8 @@ Scoping mobile/tablet app for SR Construction
 
 ## Server
 
-  The server is a reference RESTful Web Service implementation.
-  The reference backend serve as the API for rapid development.
-
-  The backend has some built-in logic and also serve as a proxy to the production API
-
-  Please note that this backend implementation is not intended for production use.
+  The application is designed to work with SR RESTful web service API
+  A reference implementation is on https://github.com/khchanel/sr-api
 
 
 ## Build
