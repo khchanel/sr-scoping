@@ -23,7 +23,7 @@ Scoping mobile/tablet app for SR Construction
 ## Server
 
   The application is designed to work with SR RESTful web service API
-  A reference implementation is on https://github.com/khchanel/sr-api
+  A reference implementation is on [khchanel/sr-api](//github.com/khchanel/sr-api)
 
 
 ## Build
