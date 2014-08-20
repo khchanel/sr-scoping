@@ -34,7 +34,7 @@ Scoping mobile/tablet app for SR Construction
     2. ruby & compass (from ruby gem)
     3. grunt-cli (from npm)
     4. bower (from npm)
-    5. cordova (from npm)
+    5. cordova (optional from npm)
     6. yo (optional from npm)
 
   Then install project dependencies:
