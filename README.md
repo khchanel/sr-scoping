@@ -52,6 +52,23 @@ Scoping mobile/tablet app for SR Construction
     2. grunt phonegap:build  (or use cordova build)
 
 
+## Test
+
+  The project development practice Test Driver Development (TDD)
+  Automatic tests covering large portion of the core.
+
+
+  Run the test:
+  ```
+  grunt test
+  ```
+
+  Run only Unit test:
+  ```
+  grunt karma:unit
+  ```
+
+
 ## Running
 
   For development:
