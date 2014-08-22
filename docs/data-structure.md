@@ -3,6 +3,7 @@ sr-scoping/client documentation
 
 ## Storage data structure
 
+```
 baskets = {
   "{{ProjectCode}}" : [
   {
@@ -15,3 +16,4 @@ baskets = {
   }
   ]
 }
+```
