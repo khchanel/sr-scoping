@@ -43,4 +43,9 @@ angular.module('srRestService', ['ngResource', 'ngStorage'])
         }
       });
     }
+  ])
+  .factory('Location', ['$resource', 'SR_API_SERVER',
+    function($resource, API_SERVER) {
+      return $resource(API_SERVER + '/location');
+    }
   ]);
