@@ -8,10 +8,6 @@
  * Controller of the srScopingApp
  */
 angular.module('srScopingApp')
-  .controller('LocationCtrl', function ($scope) {
-    $scope.locations = [
-      'AIRL',
-      'HALL',
-      'BED1'
-    ];
+  .controller('LocationCtrl', function ($scope, Location) {
+    $scope.locations = Location.query();
   });
