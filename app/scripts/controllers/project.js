@@ -10,5 +10,5 @@
 angular.module('srScopingApp')
   .controller('ProjectCtrl', function ($scope, ShareProperty) {
     $scope.project = ShareProperty.get('active_project');
-    $scope.basketTemplateUrl = 'views/basket.html';
+    $scope.basketTemplateUrl = 'views/partials/_basket.html';
   });
