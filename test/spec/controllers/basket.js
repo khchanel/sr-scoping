@@ -124,6 +124,12 @@ describe('Controller: BasketCtrl', function () {
   });
 
 
+  it('should have checkout function defined', function() {
+    expect(scope.checkout).toBeDefined();
+    expect(scope.confirmCheckout).toBeDefined();
+  });
+
+
   describe('BasketCtrl: using window object', function() {
     var mywindow;
 
@@ -150,6 +156,12 @@ describe('Controller: BasketCtrl', function () {
       expect(mywindow.confirm).toHaveBeenCalled();
 
       expect(scope.basket.length).toBe(testTasks.length);
+    });
+
+
+    it('should confirm before checkout project', function() {
+      scope.confirmCheckout();
+      expect(mywindow.confirm).toHaveBeenCalled();
     });
   });
 });

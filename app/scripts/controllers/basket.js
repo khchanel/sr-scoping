@@ -30,6 +30,16 @@ angular.module('srScopingApp')
       return total;
     };
 
+
+    /**
+     * Project checkout
+     */
+    $scope.checkout = function() {
+      // TODO
+      $window.alert('Project checkout!');
+    };
+
+
     $scope.clearBasket = function() {
       $scope.$storage.baskets[project] = [];
       $scope.basket = [];
@@ -40,6 +50,18 @@ angular.module('srScopingApp')
 
       if(confirm) {
         $scope.clearBasket();
+      }
+    };
+
+
+    /**
+     * Confirmation for project checkout
+     */
+    $scope.confirmCheckout = function() {
+      var confirm = $window.confirm('Are you sure you want to checkout this project?');
+
+      if(confirm) {
+        $scope.checkout();
       }
     };
   });
