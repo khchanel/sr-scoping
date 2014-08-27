@@ -20,6 +20,9 @@ angular.module('srScopingApp')
     $scope.basket = $scope.$storage.baskets[project];
 
 
+    /**
+     * Calculate total price of all basket items
+     */
     $scope.total = function() {
       var total = 0;
 
@@ -40,11 +43,18 @@ angular.module('srScopingApp')
     };
 
 
+    /**
+     * Clear everything in project basket
+     */
     $scope.clearBasket = function() {
       $scope.$storage.baskets[project] = [];
       $scope.basket = [];
     };
 
+
+    /**
+     * Confirmation window for clearing basket
+     */
     $scope.confirmClearBasket = function() {
       var confirm = $window.confirm('Are you sure you want to clear basket?');
 
