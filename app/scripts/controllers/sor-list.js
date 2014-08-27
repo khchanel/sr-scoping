@@ -66,6 +66,7 @@ angular.module('srScopingApp')
         $scope.query = Sor.query({
             'page': $scope.pagingOptions.currentPage,
             'per_page': $scope.pagingOptions.pageSize,
+            'location': $scope.location,
             'keyword': $scope.filterOptions.filterText
           }, function() {
             $scope.sors = $scope.query.data;
@@ -150,6 +151,7 @@ angular.module('srScopingApp')
           start: 0,
           end: 0
         };
+        $scope.location = $scope.ons.navigator.getCurrentPage().options.location;
 
         $scope.fetch();
       })();

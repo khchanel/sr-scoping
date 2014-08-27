@@ -8,10 +8,12 @@ describe('Service: srRestService', function () {
   // instantiate service
   var Sor;
   var Project;
+  var Location;
 
-  beforeEach(inject(function (_Sor_, _Project_) {
+  beforeEach(inject(function (_Sor_, _Project_, _Location_) {
     Sor = _Sor_;
     Project = _Project_;
+    Location = _Location_;
   }));
 
   it('should have Sor being true', function () {
@@ -31,6 +33,11 @@ describe('Service: srRestService', function () {
   it('should have defined Project factory', inject(function(Project) {
     expect(Project).toBeDefined();
     expect(Project.query).toBeDefined();
+  }));
+
+  it('should have defined Location factory', inject(function(Location) {
+    expect(Location).toBeDefined();
+    expect(Location.query).toBeDefined();
   }));
 
 });

@@ -66,6 +66,13 @@ describe('Controller: SorListCtrl', function () {
     // mock a ons object
     scope.ons = {
       navigator: {
+        getCurrentPage: function() {
+          return {
+            options: {
+              sorObj: testSor
+            }
+          };
+        },
         pushPage: function() {
           return true;
         }
