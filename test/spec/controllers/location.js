@@ -16,7 +16,8 @@ describe('Controller: LocationCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('should attach a list of locations to the scope', function () {
+    expect(scope.locations).toBeDefined();
+    expect(scope.locations instanceof Array).toBe(true);
   });
 });

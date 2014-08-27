@@ -1,1 +1,21 @@
-<p>This is the location view.</p>
+<ons-page ng-controller="LocationCtrl">
+  <ons-scroller>
+
+    <div class="container">
+      <h2>Choose SOR by location</h2>
+
+      <button class="topcoat-button  topcoat-button--cta location-btn" ng-click="ons.navigator.pushPage('views/sor-list.html', {title: 'SOR List - All'})">
+        All
+      </button>
+
+      <button
+          ng-repeat="loc in locations"
+          class="topcoat-button location-btn"
+          ng-click="ons.navigator.pushPage('views/sor-list.html', {title: 'SOR List - in ' + loc, location: loc})">
+        {{loc}}
+      </button>
+
+    </div>
+
+  </ons-scroller>
+</ons-page>
