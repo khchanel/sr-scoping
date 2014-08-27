@@ -55,7 +55,12 @@
           <p>Location:</p>
         </ons-col>
         <ons-col>
-          <p>{{sor.Location}}</p>
+          <p>{{sor.Location}}</p><br/>
+        </ons-col>
+        <ons-col>
+          <label for="location">Choose:</label>
+          <select name="location" multiple ng-model="location" ng-options="o for o in locationOptions">
+          </select>
         </ons-col>
       </ons-row>
 

@@ -8,12 +8,16 @@
  * Controller of the srScopingApp
  */
 angular.module('srScopingApp')
-  .controller('BasketEditCtrl', function($scope, $window) {
+  .controller('BasketEditCtrl', function($scope, $window, Location) {
     $scope.storedTask = $scope.ons.navigator.getCurrentPage().options.taskObj;
     $scope.basket = $scope.ons.navigator.getCurrentPage().options.basketObj;
 
     // use a local copy of task for draft
     $scope.task = angular.copy($scope.storedTask);
+
+    $scope.locationOptions = Location.query({}, function() {
+      $scope.locationOptions.unshift(null);
+    });
 
     $scope.saveBtnClass = 'topcoat-button';
     $scope.saveBtnText = 'Save';
@@ -27,6 +31,7 @@ angular.module('srScopingApp')
     $scope.saveTask = function() {
 
       // set updated task data
+      $scope.storedTask.location = $scope.task.location;
       $scope.storedTask.comment = $scope.task.comment;
       $scope.storedTask.quantity = $scope.task.quantity;
 

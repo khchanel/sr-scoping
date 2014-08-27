@@ -8,13 +8,18 @@
  * Controller of the srScopingApp
  */
 angular.module('srScopingApp')
-  .controller('SorDetailCtrl', function($scope, $localStorage, ShareProperty) {
+  .controller('SorDetailCtrl', function($scope, $localStorage, Location, ShareProperty) {
     $scope.$storage = $localStorage;
     $scope.projectCode = ShareProperty.get('active_project').Code;
 
     $scope.sor = $scope.ons.navigator.getCurrentPage().options.sorObj;
     $scope.quantity = 0;
     $scope.comment = '';
+    $scope.location = [];
+
+    $scope.locationOptions = Location.query({}, function() {
+      $scope.locationOptions.unshift(null);
+    });
 
     $scope.addBtnClass = 'topcoat-button';
     $scope.addBtnText = 'Add';
@@ -31,6 +36,7 @@ angular.module('srScopingApp')
       var task = {
         'sor': $scope.sor,
         'quantity': $scope.quantity,
+        'location': $scope.location,
         'comment': $scope.comment
       };
 

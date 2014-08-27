@@ -9,6 +9,7 @@ baskets = {
   {
     "sor": SOR-Object,
     "quantity": 123,
+    "location": ['AIRL', 'HALL'],
     "comment":  "this is broken"
   },
   {

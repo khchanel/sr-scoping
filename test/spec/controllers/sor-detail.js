@@ -96,6 +96,10 @@ describe('Controller: SorDetailCtrl', function () {
     expect(scope.comment).toBeDefined();
   });
 
+  it('should contain task location', function() {
+    expect(scope.location).toBeDefined();
+  });
+
   it('should have $storage.baskets defined', function() {
     expect(scope.$storage.baskets).toBeDefined();
     expect(typeof scope.$storage.baskets).toBe('object');
@@ -107,9 +111,11 @@ describe('Controller: SorDetailCtrl', function () {
 
     var myquantity = 3;
     var mycomment = 'need special care';
+    var mylocation = ['AIRL', 'HALL'];
 
     scope.quantity = myquantity;
     scope.comment = mycomment;
+    scope.location = mylocation;
     scope.addTask();
 
     expect(ShareProperty.get).toHaveBeenCalledWith('active_project');
@@ -119,6 +125,7 @@ describe('Controller: SorDetailCtrl', function () {
     expect(scope.$storage.baskets[testProject.Code][0].sor.SORCode).toBe(testSor.SORCode);
     expect(scope.$storage.baskets[testProject.Code][0].quantity).toBe(myquantity);
     expect(scope.$storage.baskets[testProject.Code][0].comment).toBe(mycomment);
+    expect(angular.equals(scope.$storage.baskets[testProject.Code][0].location, mylocation)).toBe(true);
 
   });
 

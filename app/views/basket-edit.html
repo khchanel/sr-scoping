@@ -57,6 +57,11 @@
         <ons-col>
           <p>{{task.sor.Location}}</p>
         </ons-col>
+        <ons-col>
+          <label for="location">Choose:</label>
+          <select name="location" multiple ng-model="task.location" ng-options="o for o in locationOptions">
+          </select>
+        </ons-col>
       </ons-row>
 
       <ons-row>

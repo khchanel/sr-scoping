@@ -27,6 +27,7 @@ describe('Controller: BasketEditCtrl', function() {
       'Photo': ''
     },
     'comment': 'need replacement',
+    'location': ['AIRL', 'HALL'],
     'quantity': 7
   }, {
     'sor': {
@@ -46,22 +47,28 @@ describe('Controller: BasketEditCtrl', function() {
       'Photo': ''
     },
     'comment': '',
+    'location': [],
     'quantity': 2
   }, {
-    'SORCode': 'MIN18650',
-    'Tradecode': '',
-    'UomCode': 'Each.',
-    'Name': '(Renew Hardwood Tread 250 wide - up to 1.1m long)',
-    'LongDescription': 'Remove and dispose of existing and supply and fix hardwood tread 250 wide - up to 1.1m long including Remove and dispose of existing and supply and fix tie bolt.  Minimum finished thickness 38mm.  Tread to have 5mm fall towards external of dwelling.',
-    'Status': 'False',
-    'Price201213': '9.999999999',
-    'Price': '9.999999999',
-    'Warranty': '0',
-    'Manual': '0',
-    'Deleted': '0',
-    'Code': '612',
-    'Location': '',
-    'Photo': ''
+    'sor': {
+      'SORCode': 'MIN18650',
+      'Tradecode': '',
+      'UomCode': 'Each.',
+      'Name': '(Renew Hardwood Tread 250 wide - up to 1.1m long)',
+      'LongDescription': 'Remove and dispose of existing and supply and fix hardwood tread 250 wide - up to 1.1m long including Remove and dispose of existing and supply and fix tie bolt.  Minimum finished thickness 38mm.  Tread to have 5mm fall towards external of dwelling.',
+      'Status': 'False',
+      'Price201213': '9.999999999',
+      'Price': '9.999999999',
+      'Warranty': '0',
+      'Manual': '0',
+      'Deleted': '0',
+      'Code': '612',
+      'Location': '',
+      'Photo': ''
+    },
+    'comment': '',
+    'location': [],
+    'quantity': 1
   }];
 
   var testBasket = angular.copy(mockBasketData);
