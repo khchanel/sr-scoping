@@ -52,6 +52,10 @@ angular
         templateUrl: 'views/basket-edit.html',
         controller: 'BasketEditCtrl'
       })
+      .when('/location', {
+        templateUrl: 'views/location.html',
+        controller: 'LocationCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
