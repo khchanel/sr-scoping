@@ -328,11 +328,16 @@ module.exports = function (grunt) {
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
-        }, {
+        }, { // for onsenui and bundled fontawesome
           expand: true,
           cwd: '<%= yeoman.app %>/bower_components/onsenui/build/css',
           dest: '<%= yeoman.dist %>/styles',
           src: ['font_awesome/fonts/*']
+        }, { // for onsenui search icon
+          expand: true,
+          cwd: '<%= yeoman.app %>/bower_components/onsenui/build/img/',
+          dest: '<%= yeoman.dist %>/img',
+          src: 'search.svg'
         }]
       },
       styles: {
