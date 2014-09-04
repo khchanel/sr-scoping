@@ -40,15 +40,40 @@ describe('Controller: SorListCtrl', function () {
       'Code': '607',
       'Location': 'AIRL',
       'Photo': ''
+    }, {
+      "SORCode": "MIN18700",
+      "Tradecode": "",
+      "UomCode": "Each.",
+      "Name": "(Refix\/tighten loose bolts to step treads)",
+      "LongDescription": "Refix\/tighten loose bolts to step treads.",
+      "Status": "False",
+      "Price201213": "6.224672019",
+      "Price": "6.351655328",
+      "Warranty": "0",
+      "Manual": "0",
+      "Deleted": "0",
+      "Code": "613",
+      "Location": "",
+      "Photo": ""
     }];
 
   var mockResource = {
-    'total': 2,
-    'per_page': 10,
+    'total': 3,
+    'per_page': 2,
     'current_page': 1,
-    'last_page': 1,
+    'last_page': 2,
     'from': 1,
     'to': 2,
+    'data': testSor
+  };
+
+  var mockResourcePage2 = {
+    'total': 3,
+    'per_page': 2,
+    'current_page': 2,
+    'last_page': 2,
+    'from': 3,
+    'to': 3,
     'data': testSor
   };
 
@@ -58,8 +83,10 @@ describe('Controller: SorListCtrl', function () {
   beforeEach(inject(function ($controller, $rootScope, _$httpBackend_, SR_API_SERVER) {
 
     $httpBackend = _$httpBackend_;
-      $httpBackend.expectGET(new RegExp(SR_API_SERVER + '/sor?.*'))
-        .respond(mockResource);
+    $httpBackend.whenGET(new RegExp(SR_API_SERVER + '/sor?.*page=2.*'))
+      .respond(mockResourcePage2);
+    $httpBackend.expectGET(new RegExp(SR_API_SERVER + '/sor?.*'))
+      .respond(mockResource);
 
     scope = $rootScope.$new();
 
@@ -88,7 +115,7 @@ describe('Controller: SorListCtrl', function () {
 
   it('should attach a list of SOR to the scope', function () {
     $httpBackend.flush();
-    expect(scope.sors.length).toBe(2);
+    expect(scope.sors.length).toBe(testSor.length);
   });
   it('should set scope.sors[0].SORCode to MIN18350', function () {
     $httpBackend.flush();
@@ -133,5 +160,25 @@ describe('Controller: SorListCtrl', function () {
 
     // filter
     expect(scope.gridOptions.filterOptions === scope.filterOptions).toBe(true);
+  });
+
+  it('should be able to change page', function() {
+    scope.pagingOptions.pageSize = 2;
+
+    // page 1
+    scope.pagingOptions.currentPage = 1;
+    $httpBackend.flush();
+    expect(scope.totalServerItems).toBe(3);
+    expect(scope.pagingOptions.currentPage).toBe(1);
+    expect(scope.showing.start).toBe(1);
+    expect(scope.showing.end).toBe(2);
+
+    // page 2
+    scope.pagingOptions.currentPage = 2;
+    $httpBackend.flush();
+    expect(scope.totalServerItems).toBe(3);
+    expect(scope.pagingOptions.currentPage).toBe(2);
+    expect(scope.showing.start).toBe(3);
+    expect(scope.showing.end).toBe(3);
   });
 });
