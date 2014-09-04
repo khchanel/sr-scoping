@@ -71,30 +71,9 @@ angular.module('srScopingApp')
           }, function() {
             $scope.sors = $scope.query.data;
             $scope.totalServerItems = $scope.query.total;
-
-            // update list start end
-            $scope.updateStartEnd();
+            $scope.showing.start = $scope.query.from;
+            $scope.showing.end = $scope.query.to;
           });
-      };
-
-      /**
-       * calculate list start and end
-       */
-      $scope.updateStartEnd = function() {
-        var size = $scope.pagingOptions.pageSize;
-        var page = $scope.pagingOptions.currentPage;
-        var total = $scope.query.total;
-        var start = 0;
-        var end = 0;
-
-        if ($scope.query.total > 0) {
-          start = size * (page - 1) + 1;
-          end = size * page;
-          end = total > end ? end : total; // use total if total is less than end
-        }
-
-        $scope.showing.start = start;
-        $scope.showing.end = end;
       };
 
 
