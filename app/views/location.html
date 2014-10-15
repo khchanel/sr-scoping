@@ -11,8 +11,8 @@
       <button
           ng-repeat="loc in locations"
           class="topcoat-button location-btn"
-          ng-click="ons.navigator.pushPage('views/sor-list.html', {title: 'SOR List - in ' + loc, location: loc})">
-        {{loc}}
+          ng-click="ons.navigator.pushPage('views/sor-list.html', {title: 'SOR List - in ' + loc, location: loc.Name})">
+        {{loc.Name}}
       </button>
 
     </div>
