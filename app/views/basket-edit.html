@@ -59,7 +59,7 @@
         </ons-col>
         <ons-col>
           <label for="location">Choose:</label>
-          <select name="location" multiple ng-model="task.location" ng-options="o for o in locationOptions">
+          <select name="location" multiple ng-model="task.location" ng-options="o.Name for o in locationOptions track by o.Code">
           </select>
         </ons-col>
       </ons-row>
