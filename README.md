@@ -1,6 +1,8 @@
 sr-scoping
 ==========
 
+[![Build Status](https://magnum.travis-ci.com/khchanel/sr-scoping.svg?token=PyJdrpzuSzm6D72nAPN7&branch=master)](https://magnum.travis-ci.com/khchanel/sr-scoping)
+
 Scoping mobile/tablet app for SR Construction
 
 
