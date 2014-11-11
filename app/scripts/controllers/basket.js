@@ -8,9 +8,10 @@
  * Controller of the srScopingApp
  */
 angular.module('srScopingApp')
-  .controller('BasketCtrl', function ($scope, $window, $localStorage, ShareProperty) {
+  .controller('BasketCtrl', function ($scope, $window, $http, $localStorage, ShareProperty, SR_API_SERVER) {
     $scope.$storage = $localStorage;
     var project = ShareProperty.get('active_project').Code;
+    $scope.project = project;
 
     // fetch a basket for the project
     if (typeof $scope.$storage.baskets[project] === 'undefined') {
@@ -18,6 +19,7 @@ angular.module('srScopingApp')
     }
 
     $scope.basket = $scope.$storage.baskets[project];
+    $scope.checkoutTxt = 'Checkout';
 
 
     /**
@@ -38,8 +40,38 @@ angular.module('srScopingApp')
      * Project checkout
      */
     $scope.checkout = function() {
-      // TODO
-      $window.alert('Project checkout!');
+
+      // prepare basket data for checkout
+      var checkoutBasket = [];
+
+      angular.forEach($scope.basket, function(task) {
+        // convert locations object to code string array
+        var locationArr = [];
+        angular.forEach(task.location, function(loc) {
+          locationArr.push(loc.Name);
+        });
+
+        // create ScopeTask object to be compatible with web service
+        var scopeTask = {
+          SorCode: task.sor.SORCode,
+          Quantity: task.quantity,
+          Locations: locationArr,
+          Comment: task.comment
+        };
+
+        checkoutBasket.push(scopeTask);
+      });
+
+      // Invoke webservice to save basket:
+      var endpoint = SR_API_SERVER + '/project/' + $scope.project + '/scoping-basket';
+      $http.post(endpoint, {Tasks: checkoutBasket})
+        .success(function() {
+          $scope.checkoutTxt = 'Request submitted!';
+        })
+        .error(function() {
+          $scope.checkoutTxt = 'Request failed!';
+        });
+
     };
 
 
