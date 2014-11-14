@@ -81,3 +81,10 @@ Scoping mobile/tablet app for SR Construction
   For production:
 
     after running grunt build, deploy files from /client/dist folder to web server
+
+  For mobile app:
+  
+    cordova emulate android
+    cordova run android
+    
+    (note: substitue android with ios, wp8..etc for other platform)
