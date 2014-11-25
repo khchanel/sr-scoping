@@ -48,13 +48,14 @@ angular.module('srScopingApp')
         // convert locations object to code string array
         var locationArr = [];
         angular.forEach(task.location, function(loc) {
-          locationArr.push(loc.Name);
+          locationArr.push(loc.Code);
         });
 
         // create ScopeTask object to be compatible with web service
         var scopeTask = {
           SorCode: task.sor.SORCode,
           Quantity: task.quantity,
+          UnitPrice: task.sor.Price,
           Locations: locationArr,
           Comment: task.comment
         };
